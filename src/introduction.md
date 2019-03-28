@@ -12,8 +12,8 @@ and implementation of Wayland, and equip you with the tools to build your own
 Wayland client and server applications. Over the course of your reading, we'll
 build a mental model of Wayland and establish the rationale that went into its
 design. Within these pages you should find many "aha!" moments as the intuitive
-design choices of Wayland become clear, which will help to keep the pages
-turning.
+design choices of Wayland become clear, which should help to keep the pages
+turning. Welcome to the future of open source graphics!
 
 ## About the author
 
