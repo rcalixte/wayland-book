@@ -1,0 +1,1 @@
+# Globals & the registry

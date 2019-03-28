@@ -1,0 +1,1 @@
+# XDG shell in depth

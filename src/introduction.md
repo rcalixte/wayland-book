@@ -1,0 +1,20 @@
+# Introduction
+
+Wayland is the next-generation display server for Unix-like systems, designed
+and built by the alumni of the venerable Xorg server, and is the best way to get
+your application windows onto your user's screens. Readers who have worked with
+X11 in the past will be pleasantly surprised by Wayland's improvements, and
+those who are new to graphics on Unix will find it a flexible and powerful
+system for building graphical applications and desktops.
+
+This book will help you establish a firm understanding of the concepts, design,
+and implementation of Wayland, and equip you with the tools to build your own
+Wayland client and server applications. Over the course of your reading, we'll
+build a mental model of Wayland and establish the rationale that went into its
+design. Within these pages you should find many "aha!" moments as the intuitive
+design choices of Wayland become clear, which will help to keep the pages
+turning.
+
+## About the author
+
+TODO
