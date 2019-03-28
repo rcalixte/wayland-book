@@ -30,7 +30,7 @@ Illustrated here is the complex landscape which makes up the *Linux* desktop.
 Don't worry - expertise with most of these systems is not required for
 understanding Wayland, and in any case are largely beyond the scope of this
 book. In fact, the Wayland protocol is quite conservative and abstract, and a
-Wayland compositor could easily be built & run most applications without
+Wayland-based desktop could easily be built & run most applications without
 implicating any of this software. That being said, a surface-level understanding
 of what these pieces are and how they work is useful. Let's start from the
 bottom and work our way up.
@@ -127,7 +127,7 @@ practical relationship with X. Libinput (along with the Wayland compositor)
 delivers keyboard events in the form of scancodes, whose precise meaning varies
 from keyboard to keyboard. It's the responsibility of xkbcommon to translate
 these scan codes into meaningful and generic key "symbols" - for example,
-converting `65` to `XKB_Key_Space`. It also contains a state machine which knows
+converting `65` to `XKB_KEY_Space`. It also contains a state machine which knows
 that pressing "1" while shift is held emits "!".
 
 ### pixman
@@ -140,7 +140,7 @@ manipulating pixel buffers, doing math with intersecting rectangles, and similar
 
 libwayland the most commonly used implementation of the Wayland protocol,
 is written in C, and handles much of the low-level wire protocol. It also
-provides a tool which generate high-level code from Wayland protocol
+provides a tool which generates high-level code from Wayland protocol
 definitions (which are XML files). We will be discussing libwayland in detail in
 chapter 1.3, and throughout this book.
 
