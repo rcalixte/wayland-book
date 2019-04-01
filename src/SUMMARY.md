@@ -9,7 +9,7 @@
     - [Asynchronous requests & events](./protocol-design/async-reqs-and-events.md)
     - [Resource allocation patterns](./protocol-design/resource-allocation.md)
     - [Atomic updates](./protocol-design/atomic-updates.md)
-    - [Using protocol extensions to build a useful system](./protocol-design/extensions.md)
+    - [The high-level protocol](./protocol-design/high-level.md)
 - [libwayland in depth](./libwayland.md)
     - [wayland-util primitives](./libwayland/util.md)
     - [wayland-scanner](./libwayland/wayland-scanner.md)
