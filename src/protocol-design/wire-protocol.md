@@ -1,11 +1,13 @@
 # Wire protocol basics
 
-This chapter describes the wire protocol used by Wayland. If you're just using
-libwayland, this chapter is optional - feel free to skip to chapter 2.2.
+**Note**: If you're just going to use libwayland, this chapter is optional -
+feel free to skip to chapter 2.2.
 
-The wire protocol is a stream of 32-bit values, using the host's byte order
-(e.g. little-endian on x86 family CPUs). These values represent the following
-primitive types:
+---
+
+The wire protocol is a stream of 32-bit values, encoded with the host's byte
+order (e.g. little-endian on x86 family CPUs). These values represent the
+following primitive types:
 
 **int, uint**: 32-bit signed or unsigned integer.
 
