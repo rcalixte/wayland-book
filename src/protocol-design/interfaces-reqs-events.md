@@ -30,8 +30,8 @@ internally.
 
 ## Events
 
-This kind of message is sent from the client to the server. The server can also
-send messages back - events. One event that the server can send regarding a
+Requests are sent from the client to the server. The server can also send
+messages back - events. One event that the server can send regarding a
 `wl_surface` is "enter", which it sends when that surface is being displayed on
 a specific output (the client might respond to this, for example, by adjusting
 its scale factor for a HiDPI display). Here's an example of such a request:
