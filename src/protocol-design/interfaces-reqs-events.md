@@ -42,9 +42,9 @@ its scale factor for a HiDPI display). Here's an example of such a message:
 This message references another object, by its ID: the `wl_output` object which
 the surface is being shown on. The client receives this and dances to a similar
 tune as the server did. It looks up object 10, associates it with the
-`wl_surface` interface, and looks up the signature of opcode 0. It decodes the
-rest of the message accordingly (looking up the `wl_output` with ID 5 as well),
-then dispatches it for processing internally.
+`wl_surface` interface, and looks up the signature of the event corresponding to
+opcode 0. It decodes the rest of the message accordingly (looking up the
+`wl_output` with ID 5 as well), then dispatches it for processing internally.
 
 ## Interfaces
 
