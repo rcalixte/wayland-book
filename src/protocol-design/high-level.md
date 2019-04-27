@@ -39,4 +39,4 @@ comes in the form of code generation - we'll talk about how libwayland does this
 in chapter 3.
 
 Starting from chapter 4, most of the remainder of this book is devoted to
-explaining this file, along with some supplementary protocol extensions.
+explaining this file, as well as some supplementary protocol extensions.
