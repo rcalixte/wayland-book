@@ -34,10 +34,10 @@ Requests are sent from the client to the server. The server can also send
 messages back - events. One event that the server can send regarding a
 `wl_surface` is "enter", which it sends when that surface is being displayed on
 a specific output (the client might respond to this, for example, by adjusting
-its scale factor for a HiDPI display). Here's an example of such a request:
+its scale factor for a HiDPI display). Here's an example of such a message:
 
     0000000A    Object ID (10)
-    000B0000    Message length (12) and request opcode (0)
+    000B0000    Message length (12) and event opcode (0)
     00000005    Output (object ID): 5
 
 This message references another object, by its ID: the `wl_output` object which
