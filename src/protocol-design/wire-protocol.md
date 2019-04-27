@@ -32,6 +32,9 @@ bits with undefined data.
 the other end using the ancillary data in the Unix domain socket message
 (msg_control).
 
+**enum**: A single value (or bitmap) from an enumeration of known constants,
+encoded into a 32-bit integer.
+
 ## Messages
 
 The wire protocol is a stream of messages built with these primitives. Every
