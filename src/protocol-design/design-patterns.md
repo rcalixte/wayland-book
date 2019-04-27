@@ -63,6 +63,6 @@ each implementation must limit itself to using only the messages supported by
 the other end of the connection. We'll discuss in chapter 5 how we establish
 which versions of each interface are in use by each party.
 
-[^1]: Except for that one interface. Look, we tried, didn't we?
+[^1]: Except for that one interface. Look, at least we tried, right?
 
 [^2]: Note that many useful protocols are still unstable at the time of writing. They may be a little kludgy, but they still see widespread use, which is why backwards compatibility is important. When promoting a protocol from unstable to stable, it's done in a way that allows software to support both the unstable and stable protocols simultaneously, allowing for a smoother transition.
