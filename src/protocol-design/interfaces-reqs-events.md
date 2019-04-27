@@ -22,10 +22,9 @@ surface has changed and needs to be redrawn. Here's an annotated example of a
 
 This is a snippet of a session - the surface was allocated earlier and assigned
 an ID of 10. When the server receives this message, it looks up the object with
-ID 10 and knows it's a `wl_surface` instance (and where to find its own state
-for that object). Knowing it's a `wl_surface`, it looks up the request with
-opcode 2: damage. Based on this it knows to expect four integers as the
-arguments, and it can decode the message and dispatch it for processing
+ID 10 and finds that its a `wl_surface` instance. Knowing this, it looks up the
+signature for the request with opcode 2. It then knows to expect four integers
+as the arguments, and it can decode the message and dispatch it for processing
 internally.
 
 ## Events
