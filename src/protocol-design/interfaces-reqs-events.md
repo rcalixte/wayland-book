@@ -49,6 +49,6 @@ opcode 0. It decodes the rest of the message accordingly (looking up the
 ## Interfaces
 
 The interfaces which define the list of requests and events, the opcodes
-associated with each, and the signatures with which you can decode the messages
+associated with each, and the signatures with which you can decode the messages -
 is agreed upon in advance. I'm sure you're dying to know how - simply turn the
 page to end the suspense.
