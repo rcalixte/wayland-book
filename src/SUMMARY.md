@@ -16,7 +16,7 @@
     - [Interfaces & listeners](./libwayland/interfaces.md)
 - [The Wayland display](./wayland-display.md)
     - [Creating a display](./wayland-display/creation.md)
-    - [Incorporating your event loop](./wayland-display/event-loop.md)
+    - [Incorporating an event loop](./wayland-display/event-loop.md)
 - [Globals & the registry](./registry.md)
     - [Binding to globals](./registry/binding.md)
     - [Registering globals](./registry/server-side.md)
