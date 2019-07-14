@@ -11,7 +11,9 @@ connection's state is quite easy:
 #include <stdio.h>
 #include <wayland-client.h>
 
-int main(int argc, char *argv[]) {
+int
+main(int argc, char *argv[])
+{
     struct wl_display *display = wl_display_connect(NULL);
     if (!display) {
         fprintf(stderr, "Failed to connect to Wayland display.\n");
@@ -77,7 +79,9 @@ program:
 #include <stdio.h>
 #include <wayland-server.h>
 
-int main(int argc, char *argv[]) {
+int
+main(int argc, char *argv[])
+{
     struct wl_display *display = wl_display_create();
     if (!display) {
         fprintf(stderr, "Unable to create Wayland display.\n");
