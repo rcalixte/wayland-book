@@ -87,3 +87,9 @@ globals available on this compositor. Try it for yourself:
 ```c
 $ cc -o globals -lwayland-client globals.c
 ```
+
+**Note**: this chapter the last time we're going to show wire protocol dumps in
+hexadecimal, and probably the last time you'll ever see them in general. A
+better way to trace your Wayland client or server is to set the
+`WAYLAND_DEBUG` variable in your environment to `1` before running your program.
+Try it now with the "globals" program!
