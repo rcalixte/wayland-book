@@ -26,8 +26,8 @@ main(int argc, char *argv[])
 }
 ```
 
-Let's compile and run this program. Asuming you're using a Wayland compositor as
-you read this, the result should look like this:
+Let's compile and run this program. Assuming you're using a Wayland compositor
+as you read this, the result should look like this:
 
 ```sh
 $ cc -o client -lwayland-client client.c

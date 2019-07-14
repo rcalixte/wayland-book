@@ -3,8 +3,8 @@
 Up to this point, we've left a crucial detail out of our explanation of how the
 Wayland protocol manages joint ownership over objects between the client and
 server: how those objects are created in the first place. The Wayland display,
-or `wl_display`, is a singleton which implicitly exists on every Wayland
-connection with ID 0. It has the following interface:
+or `wl_display`, implicitly exists on every Wayland connection. It has the
+following interface:
 
 ```xml
 <interface name="wl_display" version="1">
