@@ -95,10 +95,6 @@ earlier. This function is also passed into `wl_resource_create` as the
 destructor, and will be called if the client terminates without explicitly
 sending the `release` request.
 
-[^1]: Resources represent the server-side state of each client's instance(s) of an object.
-
-[^2]: A slightly more sophisticated version of our "globals" program called `weston-info` is available from the Weston project, if you're interested in something more robust.
-
 The other remaining "TODO" in our code is to send the "name" event, as well as a
 few others. If we review `wayland.xml`, we see this event on the interface:
 
@@ -154,3 +150,7 @@ wl_output_handle_bind(struct wl_client *client, void *data,
 **Note**: `wl_output::geometry` is shown here for illustrative purposes, but in
 practice there are some special considerations for its use. Review the protocol
 XML before implementing this event in your client or server.
+
+[^1]: Resources represent the server-side state of each client's instance(s) of an object.
+
+[^2]: A slightly more sophisticated version of our "globals" program called `weston-info` is available from the Weston project, if you're interested in something more robust.
