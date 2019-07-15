@@ -63,7 +63,8 @@ registry_handle_global_remove(void *data, struct wl_registry *registry,
 	// This space deliberately left blank
 }
 
-static const struct wl_registry_listener registry_listener = {
+static const struct wl_registry_listener
+registry_listener = {
 	.global = registry_handle_global,
 	.global_remove = registry_handle_global_remove,
 };
