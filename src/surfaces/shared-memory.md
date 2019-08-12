@@ -15,6 +15,7 @@ Extending the example given in chapter 5.1, we get the following:
 
 ```
 struct our_state {
+    // ...
     struct wl_shm *shm;
     // ...
 };
