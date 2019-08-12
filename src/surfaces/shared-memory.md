@@ -13,7 +13,7 @@ The registry global listener explained in chapter 5.1 will advertise the
 `wl_shm` global when it's available. Binding to it is fairly straightforward.
 Extending the example given in chapter 5.1, we get the following:
 
-```c
+```
 struct our_state {
     struct wl_shm *shm;
     // ...
@@ -53,7 +53,7 @@ create a file suitable for this purpose, and `ftruncate` can be utilized to
 bring it up to the appropriate size. The following boilerplate may be freely
 used under public domain or CC0:
 
-```c
+```
 #define _POSIX_C_SOURCE 200112L
 #include <errno.h>
 #include <fcntl.h>
@@ -117,7 +117,7 @@ of 16,588,800 bytes. Bind to the `wl_shm` global from the registry as explained
 in chapter 5.1, then use it like so to create an shm pool which can hold these
 buffers:
 
-```c
+```
 const int width = 1920, height = 1080;
 const int stride = width * 4;
 const int shm_pool_size = height * stride * 2;
@@ -138,7 +138,7 @@ this pool right away. Since we allocated space for two buffers, we can assign
 each an index and convert that index into a byte offset in the pool. Equipped
 with this information, we can create a `wl_buffer`:
 
-```c
+```
 int index = 0;
 int offset = height * stride * index;
 struct wl_buffer *buffer = wl_shm_pool_create_buffer(pool, offset,
@@ -148,14 +148,14 @@ struct wl_buffer *buffer = wl_shm_pool_create_buffer(pool, offset,
 We can write an image to this buffer now as well. For example, to set it to
 solid white:
 
-```c
+```
 uint32_t *pixels = (uint32_t *)pool_data[offset];
 memset(pixels, 0, width * height * 4);
 ```
 
 Or, for something more interesting, here's a checkerboard pattern:
 
-```c
+```
 uint32_t *pixels = (uint32_t *)pool_data[offset];
 for (int y = 0; y < height; ++y) {
   for (int x = 0; x < width; ++x) {
@@ -180,7 +180,51 @@ wl_surface_commit(surface);
 If you were to apply all of this newfound knowledge to writing a Wayland client
 yourself, you may arrive at this point confused when your buffer is not shown
 on-screen. We're missing a critical final step - assigning your surface a role.
-Turn to chapter 6.4 to learn more, or turn to the next page to learn about
-another kind of buffer storage first.
 
 [^1]: "Damaged" meaning "this area needs to be redrawn"
+
+## wl_shm on the server
+
+Before we get there, however, the server-side part of this deserves note.
+libwayland provides some helpers to make using `wl_shm` easier. To configure it
+for your display, it only requires the following:
+
+```
+int
+wl_display_init_shm(struct wl_display *display);
+
+uint32_t *
+wl_display_add_shm_format(struct wl_display *display, uint32_t format);
+```
+
+The former creates the global and rigs up the internal implementation, and the
+latter adds a supported pixel format (remember to at least add ARGB8888 and
+XRGB8888). Once a client attaches a buffer to one of its surfaces, you can pass
+the buffer resource into `wl_shm_buffer_get` to obtain a `wl_shm_buffer`
+reference, and utilize it like so:
+
+```
+void
+wl_shm_buffer_begin_access(struct wl_shm_buffer *buffer);
+
+void
+wl_shm_buffer_end_access(struct wl_shm_buffer *buffer);
+
+void *
+wl_shm_buffer_get_data(struct wl_shm_buffer *buffer);
+
+int32_t
+wl_shm_buffer_get_stride(struct wl_shm_buffer *buffer);
+
+uint32_t
+wl_shm_buffer_get_format(struct wl_shm_buffer *buffer);
+
+int32_t
+wl_shm_buffer_get_width(struct wl_shm_buffer *buffer);
+
+int32_t
+wl_shm_buffer_get_height(struct wl_shm_buffer *buffer);
+```
+
+If you guard your accesses to the buffer data with `begin_access` and
+`end_access`, libwayland will take care of locking for you.

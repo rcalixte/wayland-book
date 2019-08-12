@@ -29,7 +29,6 @@
     - [XDG surfaces](./xdg-shell-basics/xdg-surface.md)
     - [Application windows](./xdg-shell-basics/xdg-toplevel.md)
 - [Surfaces in depth](./surfaces-in-depth.md)
-    - [dmabuf buffers](./surfaces/dmabuf.md)
     - [Surface lifecycle](./surfaces/lifecycle.md)
     - [Frame callbacks](./surfaces-in-depth/frame-callbacks.md)
     - [Damaging surfaces](./surfaces-in-depth/damaging-surfaces.md)
