@@ -1,16 +1,14 @@
 # XDG surfaces
 
-Surfaces under the authority of xdg-shell are referred to as `xdg_surface`s, and
+Surfaces under the authority of xdg-shell are referred to as `xdg_surfaces`, and
 this interface brings with it a small amount of functionality common to both
-kinds of XDG surfaces. Creating an `xdg_surface` is not, however, sufficient to
-get the compositor to display it. The semantics for each kind of XDG surface -
-toplevels and popups - are different enough still that they must be specified
-explicitly through an additional role.
+kinds of XDG surfaces. The semantics for each kind of XDG surface - toplevels
+and popups - are different enough still that they must be specified explicitly
+through an additional role.
 
-Before we can do this, we must obtain an `xdg_surface`, which provides
-additional requests for assigning a more specific role. Once we've bound an
-object to the `xdg_wm_base` global, we can use the `get_xdg_surface` request for
-this purpose.
+The `xdg_surface` interface provides additional requests for assigning the more
+specific roles of popup and toplevel. Once we've bound an object to the
+`xdg_wm_base` global, we can use the `get_xdg_surface` request to obtain one.
 
 ```xml
 <request name="get_xdg_surface">
@@ -20,9 +18,9 @@ this purpose.
 ```
 
 The `xdg_surface` interface, in addition to requests for assigning a more
-specific role of toplevel or popup to your surface, contains some important
-requests addressing behavior common to both roles. Let's consider these before
-we move on to the toplevel and popup semantics.
+specific role of toplevel or popup to your surface, also includes some important
+functionality common to both roles. Let's review these before we move on to the
+toplevel- and popup-specific semantics.
 
 ```xml
 <request name="set_window_geometry">
