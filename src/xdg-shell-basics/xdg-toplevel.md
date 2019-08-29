@@ -163,7 +163,6 @@ xdg_surface_configure(void *data,
 
     struct wl_buffer *buffer = draw_frame(state);
     wl_surface_attach(state->wl_surface, buffer, 0, 0);
-    wl_surface_damage_buffer(state->wl_surface, 0, 0, INT32_MAX, INT32_MAX);
     wl_surface_commit(state->wl_surface);
 }
 
