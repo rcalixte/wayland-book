@@ -103,8 +103,6 @@ struct client_state {
 	struct wl_surface *wl_surface;
 	struct xdg_surface *xdg_surface;
 	struct xdg_toplevel *xdg_toplevel;
-	/* State */
-	bool closed;
 };
 
 static void wl_buffer_release(void *data, struct wl_buffer *wl_buffer) {
@@ -228,7 +226,7 @@ main(int argc, char *argv[])
 	xdg_toplevel_set_title(state.xdg_toplevel, "Example client");
 	wl_surface_commit(state.wl_surface);
 
-	while (wl_display_dispatch(state.wl_display) && !state.closed) {
+	while (wl_display_dispatch(state.wl_display)) {
 		/* This space deliberately left blank */
 	}
 
