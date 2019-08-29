@@ -39,39 +39,25 @@ being considered a part of it. The compositor may apply this information to
 govern its own behaviors for arranging and interacting with the window.
 
 ```xml
-<request name="ack_configure">
-  <arg name="serial" type="uint" summary="the serial from the configure event"/>
-</request>
-
 <event name="configure">
   <arg name="serial" type="uint" summary="serial of the configure event"/>
 </event>
+
+<request name="ack_configure">
+  <arg name="serial" type="uint" summary="the serial from the configure event"/>
+</request>
 ```
 
-This pair is more complicated. You'll recall that a fundamental goal of Wayland:
-every frame ought to be perfect. For this reason, nearly all of Wayland's
-interfaces are designed to be atomic, even when updating lots of information
-over several requests. For surfaces in particular, this is an involved process.
-Because the semantics of services span several interfaces, orchestrating atomic
-changes to of all of their respective states is not trivial.
+But the most important member of xdg-surface is this pair: `configure` and
+`ack_configure`. You may recall that a goal of Wayland is to make every frame
+perfect. That means no frames shown between two states, and to accomplish this
+we have to syncronize any changes to state between the client and server, so
+that the compositor never shows an incomplete state change. Through this pair of
+requests, this goal is fulfilled for xdg surfaces.
 
-Consider for example the problem of maximizing a window. When the window is not
-maximized, it has been drawn a certain way. It's shown at a certain resolution,
-and client-side decorations, if present, often indicate this state visually. The
-toplevel interface we'll explore in the next chapter offers a means of
-maximizing a window, but how do we synchronize this? The client must render a new
-buffer at the desired resolution, with any necessary changes to its appearance
-to indicate the new state, then provide the compositor with the updated buffer.
-Until then, the compositor will continue showing the last good buffer it has,
-and only once the client has replied can it present the changes. This all must
-be accomplished asynchronously.
-
-Though this sounds complicated, the consequences of it are simple. As changes to
-the state and appearance of your window are negotiated through events in the
-higher-level toplevel and popup interfaces, you should queue up the changes
-until you receive a configure event. When you do, you may apply the changes,
-render and attach a new buffer, and send an ack configure request with the same
-serial. Or, if you're a server, you should allocate a serial and queue up the
-changes similarly, keyed by that serial. When you receive a configure event,
-you'll know that the client has arrived at a state consistent with the
-corresponding serial and you may safely apply the changes.
+We're only covering the basics for now, so we'll summarize the importance of
+these two events as such: as events from the server inform your configuration
+(or reconfiguration) of a surface, apply them to a pending state. When a
+`configure` event arrives, apply the pending state, use `ack_configure` to
+acknowledge the change, and render and commit a frame to the surface. We'll show
+this in practice in the next chapter, and explain it in detail in chapter 8.1.
