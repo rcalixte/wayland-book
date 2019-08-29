@@ -34,6 +34,7 @@
     - [Damaging surfaces](./surfaces-in-depth/damaging-surfaces.md)
     - [Surface regions](./surfaces-in-depth/surface-regions.md)
     - [Subsurfaces](./surfaces-in-depth/subsurfaces.md)
+    - [High density surfaces (HiDPI)](./hidpi.md)
 - [XDG shell in depth](./xdg-shell-in-depth.md)
     - [Popups & parent windows](./xdg-shell-in-depth/popups.md)
     - [Positioners](./xdg-shell-in-depth/positioners.md)
@@ -45,11 +46,13 @@
 - [Clipboard access](./clipboard.md)
     - [Data offers](./clipboard/data-offers.md)
     - [Drag & drop](./clipboard/dnd.md)
-
-[Appx A. The libwayland implementation](./libwayland.md)
-[Appx B. Considerations for HiDPI](./hidpi.md)
-[Appx C. Writing new Wayland protocols](./writing-new-protocols.md)
-[Appx D. Popular protocol extensions](./protocol-extensions.md)
+- [Protocol extensions](./protocol-extensions.md)
+    - [Accurate timing](./protocol-extensions/timing.md)
+    - [Pointer constraints](./protocol-extensions/pointer-constraints.md)
+    - [Extended clipboard support](./protocol-extensions/clipboard.md)
+    - [Desktop shell components](./protocol-extensions/desktop-shell.md)
+    - [Miscellaneous extensions](./protocol-extensions/misc.md)
+    - [Writing new extensions](./protocol-extensions/writing.md)
 
 ---
 

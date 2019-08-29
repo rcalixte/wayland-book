@@ -1,1 +1,1 @@
-# Considerations for HiDPI
+# Appx B. Considerations for HiDPI

@@ -1,1 +1,1 @@
-# Appx 3: Writing new Wayland protocols
+# Appx C. Writing new Wayland protocols
