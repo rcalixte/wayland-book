@@ -20,20 +20,16 @@ thus we call the software which does this the *compositor*.
 
 ## In practice
 
-There are many distinct software components in Wayland ecosystem. This complex
-and intimidating flowchart should confuse things nicely:
-
-TODO: Make a confusing flowchart showing the relationship between all of the
-components.
-
-Illustrated here is the complex landscape which makes up the *Linux* desktop.
-Don't worry - expertise with most of these systems is not required for
-understanding Wayland, and in any case are largely beyond the scope of this
-book. In fact, the Wayland protocol is quite conservative and abstract, and a
-Wayland-based desktop could easily be built & run most applications without
-implicating any of this software. That being said, a surface-level understanding
-of what these pieces are and how they work is useful. Let's start from the
-bottom and work our way up.
+There are many distinct software components in desktop ecosystem. There are
+tools like mesa for rendering (and each of its drivers), the Linux KMS/DRM
+subsystem, buffer allocation with GBM, the userspace libdrm library, libinput
+and evdev, and much more still. Don't worry - expertise with most of these
+systems is not required for understanding Wayland, and in any case are largely
+beyond the scope of this book. In fact, the Wayland protocol is quite
+conservative and abstract, and a Wayland-based desktop could easily be built &
+run most applications without implicating any of this software. That being said,
+a surface-level understanding of what these pieces are and how they work is
+useful. Let's start from the bottom and work our way up.
 
 ## The hardware
 
