@@ -1,0 +1,30 @@
+image: alpine/edge
+packages:
+- cargo
+- rust
+- cmake
+- expat-dev
+- fontconfig-dev
+- harfbuzz-dev
+- freetype-dev
+- openssl-dev
+sources:
+- https://git.sr.ht/~sircmpwn/wayland-book
+- https://github.com/rust-lang-nursery/mdBook
+- https://github.com/lbeckman314/mdbook-latex
+tasks:
+- setup: |
+    echo "export PATH=$PATH:$HOME/.cargo/bin" >>.buildenv
+- mdbook: |
+    cd mdBook
+    cargo install --path .
+- mdbook-latex: |
+    cd mdbook-latex
+    cargo install --path .
+- build: |
+    cd wayland-book
+    mdbook build
+# TODO: package calibre for Alpine Linux
+#- epub: |
+#    cd wayland-book
+#    ebook-convert book/html/print.html book/'The Wayland Book'.epub
