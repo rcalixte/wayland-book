@@ -8,6 +8,8 @@ packages:
 - harfbuzz-dev
 - freetype-dev
 - openssl-dev
+secrets:
+  - 160a72cf-34d6-47b7-928b-c13b42b4d4f6
 sources:
 - https://git.sr.ht/~sircmpwn/wayland-book
 - https://github.com/rust-lang-nursery/mdBook
@@ -29,3 +31,7 @@ tasks:
 #- epub: |
 #    cd wayland-book
 #    ebook-convert book/html/print.html book/'The Wayland Book'.epub
+- deploy: |
+    cd wayland-book
+    sshopts="-o StrictHostKeyChecking=no"
+    rsync --rsh="ssh $sshopts" -rP book/html/ deploy@drewdevault.com:/var/www/wayland-book/
