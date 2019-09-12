@@ -18,9 +18,10 @@ tasks:
 - mdbook: |
     cd mdBook
     cargo install --path .
-- mdbook-latex: |
-    cd mdbook-latex
-    cargo install --path .
+# TODO: Generate PDFs for distribution
+#- mdbook-latex: |
+#    cd mdbook-latex
+#    cargo install --path .
 - build: |
     cd wayland-book
     mdbook build

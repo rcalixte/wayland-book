@@ -6,5 +6,5 @@ title = "The Wayland Protocol"
 
 [output.html]
 
-[output.latex]
-pdf = true
+#[output.latex]
+#pdf = true
