@@ -122,7 +122,7 @@ Then implement it like so:
 +	cb = wl_surface_frame(state->wl_surface);
 +	wl_callback_add_listener(cb, &wl_surface_frame_listener, state);
 +
-+	/* Update scroll amount at 8 pixels per second */
++	/* Update scroll amount at 24 pixels per second */
 +	if (state->last_frame != 0) {
 +		int elapsed = time - state->last_frame;
 +		state->offset += elapsed / 1000.0 * 24;
