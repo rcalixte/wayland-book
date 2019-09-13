@@ -148,9 +148,9 @@ Then implement it like so:
 
 Now, with each frame, we'll
 
-1. Destroy the now-unnecessary frame callback.
-2. Request a callback for the next frame.
-3. Render and submit new frame.
+1. Destroy the now-used frame callback.
+2. Request a new callback for the next frame.
+3. Render and submit the new frame.
 
 The third step, broken down, is:
 
