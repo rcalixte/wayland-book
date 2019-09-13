@@ -139,6 +139,7 @@ draw_frame(struct client_state *state)
     struct wl_buffer *buffer = wl_shm_pool_create_buffer(pool, 0,
             width, height, stride, WL_SHM_FORMAT_XRGB8888);
     wl_shm_pool_destroy(pool);
+    close(fd);
 
     /* Draw checkerboxed background */
     for (int y = 0; y < height; ++y) {
@@ -150,6 +151,7 @@ draw_frame(struct client_state *state)
         }
     }
 
+    munmap(data, size);
     wl_buffer_add_listener(buffer, &wl_buffer_listener, NULL);
     return buffer;
 }
