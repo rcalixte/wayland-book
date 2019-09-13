@@ -1,13 +1,14 @@
 image: alpine/edge
 packages:
 - cargo
-- rust
 - cmake
 - expat-dev
 - fontconfig-dev
-- harfbuzz-dev
 - freetype-dev
+- harfbuzz-dev
 - openssl-dev
+- rsync
+- rust
 secrets:
   - 160a72cf-34d6-47b7-928b-c13b42b4d4f6
 sources:
@@ -34,4 +35,4 @@ tasks:
 - deploy: |
     cd wayland-book
     sshopts="-o StrictHostKeyChecking=no"
-    rsync --rsh="ssh $sshopts" -rP book/html/ deploy@drewdevault.com:/var/www/wayland-book/
+    rsync --rsh="ssh $sshopts" -rP book/ deploy@drewdevault.com:/var/www/wayland-book/
