@@ -154,8 +154,8 @@ Now, with each frame, we'll
 
 The third step, broken down, is:
 
-1. Update our state with a new offset, which uses the time difference from the
-   last frame to scroll at a consistent rate.
+1. Update our state with a new offset, using the time since the last frame to
+   scroll at a consistent rate.
 2. Prepare a new `wl_buffer` and render a frame for it.
 3. Attach the new `wl_buffer` to our surface.
 4. Damage the entire surface.
