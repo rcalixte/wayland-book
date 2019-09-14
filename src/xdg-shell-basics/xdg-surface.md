@@ -51,7 +51,7 @@ govern its own behaviors for arranging and interacting with the window.
 But the most important member of xdg-surface is this pair: `configure` and
 `ack_configure`. You may recall that a goal of Wayland is to make every frame
 perfect. That means no frames shown between two states, and to accomplish this
-we have to syncronize any changes to state between the client and server, so
+we have to synchronize any changes to state between the client and server, so
 that the compositor never shows an incomplete state change. Through this pair of
 requests, this goal is fulfilled for xdg surfaces.
 

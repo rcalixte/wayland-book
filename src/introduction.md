@@ -24,7 +24,7 @@ later, and chapters 8 forward in large part remain to be written.
   In the words of Preston Carpenter, a close collaborator of Drew's:
 </small>
 
-Drew Devault got his start in the Wayland world by building sway, a clone of the
+Drew DeVault got his start in the Wayland world by building sway, a clone of the
 popular tiling window manager i3. It is now the most popular tiling Wayland
 compositor by any measure: users, commit count, and influence. Following its
 success, Drew gave back to the Wayland community by starting wlroots:

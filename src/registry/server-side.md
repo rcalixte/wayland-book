@@ -2,7 +2,7 @@
 
 Registering globals with libwayland-server is done somewhat differently. When
 you generate "server-code" with wayland-scanner, it creates interfaces
-(which are analagous to listeners) and glue code for sending events. The first
+(which are analogous to listeners) and glue code for sending events. The first
 task is to register the global, with a function to rig up a *resource*[^1] when
 the global is bound. In terms of code, the result looks something like this:
 

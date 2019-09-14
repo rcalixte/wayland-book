@@ -45,7 +45,7 @@ you're writing your own libwayland replacement.
 
 Instead, this chapter will focus on a number of functions that libwayland
 associated with the `wl_display` object, for establishing and maintaining your
-Wayland connection. These are used to maniuplate libwayland's internal state,
+Wayland connection. These are used to manipulate libwayland's internal state,
 rather than being directly related to wire protocol requests and events.
 
 We'll start with the most important of these functions: establishing the

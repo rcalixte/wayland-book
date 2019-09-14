@@ -3,7 +3,7 @@
 The simplest means of getting pixels from client to compositor, and the only one
 enshrined in `wayland.xml`, is `wl_shm` - shared memory. Simply put, it allows
 you to transfer a file descriptor for the compositor to mmap with `MAP_SHARED`,
-then share pixel buffers out of this pool. Add some simple syncronization
+then share pixel buffers out of this pool. Add some simple synchronization
 primitives to keep everyone from fighting over each buffer, and you have a
 workable - and portable - solution.
 
@@ -134,7 +134,7 @@ struct wl_shm_pool *pool = wl_shm_create_pool(shm, fd, shm_pool_size);
 ## Creating buffers from a pool
 
 Once word of this gets to the compositor, it will `mmap` this file descriptor as
-well. Wayland is asyncronous, though, so we can start allocating buffers from
+well. Wayland is asynchronous, though, so we can start allocating buffers from
 this pool right away. Since we allocated space for two buffers, we can assign
 each an index and convert that index into a byte offset in the pool. Equipped
 with this information, we can create a `wl_buffer`:

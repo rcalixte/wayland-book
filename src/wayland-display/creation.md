@@ -47,7 +47,7 @@ The "name" argument is the name of the Wayland display, which is typically
 yourself - it's likely to work. This corresponds to the name of a Unix socket in
 `$XDG_RUNTIME_DIR`. `NULL` is preferred, however, in which case libwayland will:
 
-1. If `$WAYLAND_DISPLAY` is set, attempt to conenct to
+1. If `$WAYLAND_DISPLAY` is set, attempt to connect to
    `$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY`
 2. Attempt to connect to `$XDG_RUNTIME_DIR/wayland-0`
 3. Fail :(

@@ -51,8 +51,8 @@ Manipulating these children is done through the `wl_subsurface` interface:
 ```
 
 The position and z-order requests here are fairly self-explanatory. However,
-the syncronization of the various properties of a `wl_subsurface` requires some
-explanation. These position and z-order properties are syncronized with the
+the synchronization of the various properties of a `wl_subsurface` requires some
+explanation. These position and z-order properties are synchronized with the
 parent surface's lifecycle. When a `wl_surface.commit` request is sent for the
 main surface, all of its subsurfaces have changes to their position and z-order
 applied with it.
