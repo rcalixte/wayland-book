@@ -48,9 +48,9 @@ When we break this down, the first number is the object ID. The most significant
 16 bits of the second number are the total length of the message in bytes, and
 the least significant bits are the request opcode. The remaining words (just
 one) are the arguments. In short, this calls request 1 (0-indexed) on object ID
-1 (the `wl_display`), which accepts one argument: the ID of the bound
-`wl_display` object. Note in the XML documentation that this new ID is defined
-ahead of time to be governed by the `wl_registry` interface:
+1 (the `wl_display`), which accepts one argument: a generated ID for a new
+object. Note in the XML documentation that this new ID is defined ahead of time
+to be governed by the `wl_registry` interface:
 
 ```xml
 <interface name="wl_registry" version="1">
