@@ -34,7 +34,7 @@
     - [Damaging surfaces](./surfaces-in-depth/damaging-surfaces.md)
     - [Surface regions](./surfaces-in-depth/surface-regions.md)
     - [Subsurfaces](./surfaces-in-depth/subsurfaces.md)
-    - [High density surfaces (HiDPI)](./hidpi.md)
+    - [High density surfaces (HiDPI)](./surfaces-in-depth/hidpi.md)
 - [XDG shell in depth](./xdg-shell-in-depth.md)
     - [Configuration & lifecycle](./xdg-shell-in-depth/configuration.md)
     - [Popups & parent windows](./xdg-shell-in-depth/popups.md)

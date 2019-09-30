@@ -15,8 +15,8 @@ design. Within these pages you should find many "aha!" moments as the intuitive
 design choices of Wayland become clear, which should help to keep the pages
 turning. Welcome to the future of open source graphics!
 
-**Notice**: this is a *draft*. Chapters 1-7 are completed, but may be updated
-later, and chapters 8 forward in large part remain to be written.
+**Notice**: this is a *draft*. Chapters 1-8 are completed, but may be updated
+later, and chapters 9 forward in large part remain to be written.
 
 ## About the author
 
