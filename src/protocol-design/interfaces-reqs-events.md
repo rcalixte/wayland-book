@@ -22,7 +22,7 @@ surface has changed and needs to be redrawn. Here's an annotated example of a
 
 This is a snippet of a session - the surface was allocated earlier and assigned
 an ID of 10. When the server receives this message, it looks up the object with
-ID 10 and finds that its a `wl_surface` instance. Knowing this, it looks up the
+ID 10 and finds that it's a `wl_surface` instance. Knowing this, it looks up the
 signature for the request with opcode 2. It then knows to expect four integers
 as the arguments, and it can decode the message and dispatch it for processing
 internally.
@@ -50,5 +50,5 @@ opcode 0. It decodes the rest of the message accordingly (looking up the
 
 The interfaces which define the list of requests and events, the opcodes
 associated with each, and the signatures with which you can decode the messages -
-is agreed upon in advance. I'm sure you're dying to know how - simply turn the
+are agreed upon in advance. I'm sure you're dying to know how - simply turn the
 page to end the suspense.

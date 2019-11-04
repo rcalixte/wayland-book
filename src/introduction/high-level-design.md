@@ -76,8 +76,8 @@ like rendering or video decoding. For evdev, the "device nodes" are
 
 ## Userspace
 
-Now, we enter userspace. Here, applications are isolated from directly accessing
-with the hardware and must work via the device nodes provided by the kernel.
+Now, we enter userspace. Here, applications are isolated from the hardware and
+must work via the device nodes provided by the kernel.
 
 ### libdrm
 
@@ -129,8 +129,8 @@ that pressing "1" while shift is held emits "!".
 ### pixman
 
 A simple library used by clients and compositors alike for efficiently
-manipulating pixel buffers, doing math with intersecting rectangles, and similar
-**pix**el **man**ipulation tasks.
+manipulating pixel buffers, doing math with intersecting rectangles, and
+performing other similar **pix**el **man**ipulation tasks.
 
 ### libwayland
 

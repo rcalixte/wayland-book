@@ -1,9 +1,9 @@
 # Goals & target audience
 
-Our goal is for you to come from this book with an understanding of the Wayland
-protocol and its high-level usage. You should have a solid understanding of
-everything in the core Wayland protocol, as well as the knowledge necessary to
-evaluate and implement the various protocol extensions necessary for its
+Our goal is for you to come away from this book with an understanding of the
+Wayland protocol and its high-level usage. You should have a solid understanding
+of everything in the core Wayland protocol, as well as the knowledge necessary
+to evaluate and implement the various protocol extensions necessary for its
 productive use. Primarily, this book uses the concerns of a Wayland client to
 frame its presentation of Wayland. However, it should provide some utility for
 those working on Wayland compositors as well.

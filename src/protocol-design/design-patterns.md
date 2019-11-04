@@ -11,7 +11,7 @@ protocol extensions, you'd be wise to apply these patterns yourself.
 The most important of the Wayland protocol design patterns is *atomicity*. A
 stated goal of Wayland is "every frame is perfect". To this end, most interfaces
 allow you to update them transactionally, using several requests to build up a
-new representation of its state, then committing it all at once. For example,
+new representation of its state, then committing them all at once. For example,
 there are several properties that may be configured on a `wl_surface`:
 
 - An attached pixel buffer
@@ -43,10 +43,10 @@ Wayland is a fully asynchronous protocol. Messages are guaranteed to arrive in
 the order they were sent, but only with respect to one sender. For example, the
 server may have several input events queued up when the client decides to
 destroy its keyboard device. The client must correctly deal with events for an
-object it no longer needs until the server catches up. Likewise, if the client
-had some requests for that object queued up before it destroyed it, they must be
-sent in the correct order so the object is not used after the client agreed not
-to.
+object it no longer needs until the server catches up. Likewise, had the client
+queued up some requests for an object before destroying it, they must send these
+requests in the correct order so that the object is no longer used after the
+client agreed it had been destroyed.
 
 ## Versioning
 
