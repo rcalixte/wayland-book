@@ -22,7 +22,7 @@ struct our_state {
 };
 
 static void
-registry_handle_global(void *data, struct wl_registry *registry,
+registry_handle_global(void *data, struct wl_registry *wl_registry,
 		uint32_t name, const char *interface, uint32_t version)
 {
     struct our_state *state = data;
