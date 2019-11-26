@@ -19,7 +19,7 @@ We've already used the `wl_compositor` interface to create `wl_surfaces` via
 The `wl_region` interface defines a group of rectangles, which collectively make
 up an arbitrarily shaped region of geometry. Its requests allow you to do
 bitwise operations against the geometry it defines by adding or subtracting
-rectangles from it>
+rectangles from it.
 
 ```xml
 <interface name="wl_region" version="1">

@@ -30,7 +30,7 @@ particular. However, we can provide a short summary of its use.
    context for your surface and `eglSwapBuffers` to send an up-to-date buffer to
    the compositor and commit the surface.
 
-Should you need to change the size of the `wl_egl_window` later, pass it to
+Should you need to change the size of the `wl_egl_window` later, use
 `wl_egl_window_resize`.
 
 ## But I really want to know about the internals

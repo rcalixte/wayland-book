@@ -25,7 +25,7 @@ opposed to being ported from X11) use this approach.
 However, it's also possible to take the wheel and incorporate the Wayland
 display into your own event loop. `wl_display` uses the event loop internally
 for processing clients, and you can choose to either monitor the Wayland event
-loop from your own, dispatching it as necessary, or you can disregard it
+loop on your own, dispatching it as necessary, or you can disregard it
 entirely and manually process client updates. If you wish to allow the Wayland
 event loop to look after itself and treat it as subservient to your own event
 loop, you can use `wl_event_loop_get_fd` to obtain a [poll][poll]-able file

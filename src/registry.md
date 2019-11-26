@@ -17,9 +17,9 @@ also have their own object IDs and interfaces, which we have to assign and agree
 upon somehow.
 
 With questions of hens and eggs no doubt coming to mind by now, I'll reveal the
-secret trick: object ID 1 is already implicitly assigned when you make the
-connection, and to the `wl_display` interface. As you'll recall the interface,
-take note of the `wl_display::get_registry` request:
+secret trick: object ID 1 is already implicitly assigned to the `wl_display`
+interface when you make the connection. As you'll recall the interface, take
+note of the `wl_display::get_registry` request:
 
 ```xml
 <interface name="wl_display" version="1">

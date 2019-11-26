@@ -4,8 +4,8 @@ We have shaved many yaks to get here, but it's time: XDG toplevel is the
 interface which we will finally use to display an application window. Once we've
 turned our `wl_surface` into an `xdg_surface` using
 `xdg_wm_base.get_xdg_surface`, we can use `xdg_surface.get_toplevel` to obtain
-an `xdg_toplevel`. Once we do, we have created an application window and we have
-at our disposal a number of requests for its configuration, such as:
+an `xdg_toplevel`. We have created an application window, and we have a number
+of requests at our disposal for its configuration:
 
 - Setting our window title
 - Starting an interactive move or resize of the window

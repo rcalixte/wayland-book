@@ -44,9 +44,9 @@ the order they were sent, but only with respect to one sender. For example, the
 server may have several input events queued up when the client decides to
 destroy its keyboard device. The client must correctly deal with events for an
 object it no longer needs until the server catches up. Likewise, had the client
-queued up some requests for an object before destroying it, they must send these
-requests in the correct order so that the object is no longer used after the
-client agreed it had been destroyed.
+queued up some requests for an object before destroying it, it would have had to
+send these requests in the correct order so that the object is no longer used
+after the client agreed it had been destroyed.
 
 ## Versioning
 
