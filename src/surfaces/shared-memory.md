@@ -150,14 +150,14 @@ We can write an image to this buffer now as well. For example, to set it to
 solid white:
 
 ```
-uint32_t *pixels = (uint32_t *)pool_data[offset];
+uint32_t *pixels = (uint32_t *)&pool_data[offset];
 memset(pixels, 0, width * height * 4);
 ```
 
 Or, for something more interesting, here's a checkerboard pattern:
 
 ```
-uint32_t *pixels = (uint32_t *)pool_data[offset];
+uint32_t *pixels = (uint32_t *)&pool_data[offset];
 for (int y = 0; y < height; ++y) {
   for (int x = 0; x < width; ++x) {
     if ((x + y / 8 * 8) % 16 < 8) {
