@@ -28,6 +28,7 @@
 - [XDG shell basics](./xdg-shell-basics.md)
     - [XDG surfaces](./xdg-shell-basics/xdg-surface.md)
     - [Application windows](./xdg-shell-basics/xdg-toplevel.md)
+    - [Extended example code](./xdg-shell-basics/example-code.md)
 - [Surfaces in depth](./surfaces-in-depth.md)
     - [Surface lifecycle](./surfaces-in-depth/lifecycle.md)
     - [Frame callbacks](./surfaces-in-depth/frame-callbacks.md)
