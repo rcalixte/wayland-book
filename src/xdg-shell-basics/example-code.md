@@ -12,7 +12,7 @@ wayland-scanner private-code \
 wayland-scanner client-header \
   < /usr/share/wayland-protocols/stable/xdg-shell/xdg-shell.xml \
   > xdg-shell-client-protocol.h
-cc -o client client.c xdg-shell-protocol.c -lwayland-client
+cc -o client client.c xdg-shell-protocol.c -lwayland-client -lrt
 ```
 
 Then run `./client` to see it in action, or `WAYLAND_DEBUG=1 ./client` to
