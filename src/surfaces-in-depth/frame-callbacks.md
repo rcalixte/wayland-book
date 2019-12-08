@@ -60,9 +60,9 @@ of state to our `client_state` struct:
 --- a/client.c
 +++ b/client.c
 @@ -71,6 +71,8 @@ struct client_state {
+ 	struct xdg_surface *xdg_surface;
  	struct xdg_toplevel *xdg_toplevel;
  	/* State */
- 	bool closed;
 +	float offset;
 +	uint32_t last_frame;
  };
@@ -97,7 +97,7 @@ In the `main` function, let's register a callback for our first new frame:
 +	struct wl_callback *cb = wl_surface_frame(state.wl_surface);
 +	wl_callback_add_listener(cb, &wl_surface_frame_listener, &state);
 +
- 	while (wl_display_dispatch(state.wl_display) && !state.closed) {
+ 	while (wl_display_dispatch(state.wl_display)) {
  		/* This space deliberately left blank */
  	}
 ```
