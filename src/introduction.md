@@ -36,6 +36,5 @@ Drew DeVault got his start in the Wayland world by building sway, a clone of the
 popular tiling window manager i3. It is now the most popular tiling Wayland
 compositor by any measure: users, commit count, and influence. Following its
 success, Drew gave back to the Wayland community by starting wlroots:
-unopinionated, composable modules for building a Wayland compositor. Today it
-bindings for 7 programming languages and is the foundation for dozens of
-independent compositors.
+unopinionated, composable modules for building a Wayland compositor. Today it is
+the foundation for dozens of independent compositors.
