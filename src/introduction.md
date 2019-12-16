@@ -22,7 +22,6 @@ later, and chapters 9 forward in large part remain to be written.
 
 - Expand on resource lifetimes and avoiding race conditions in chapter 2.4
 - Move linux-dmabuf details to the appendix, add note about wl_drm & mesa
-- Popups and input semantics are interwoven, move chapter 10 before chapter 9?
 - Use &mdash; instead of - where appropriate
 - Generate PDFs and EPUBs
 

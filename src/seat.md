@@ -70,18 +70,18 @@ Before we get to those, let's cover some common semantics.
 ## Event serials
 
 Some actions that a Wayland client may perform require a trivial form of
-authentication in the form of input event serials. For example, opening a popup
-(a context menu summoned with a rick click is one kind of popup) will "grab" all
-input events server-side from the affected seat until the popup is dismissed.
-To prevent abuse of this feature, the server can assign serials to each input
-event it sends, and require the client to include one of these serials in the
-request to create a popup.
+authentication in the form of input event serials. For example, a client which
+opens a popup (a context menu summoned with a rick click is one kind of popup)
+may want to "grab" all input events server-side from the affected seat until the
+popup is dismissed.  To prevent abuse of this feature, the server can assign
+serials to each input event it sends, and require the client to include one of
+these serials in the request.
 
 When the server receives such a request, it looks up the input event associated
 with the given serial and makes a judgement call. If the event was too long ago,
 or for the wrong surface, or wasn't the right kind of event &mdash; for example,
-it could reject opening popups when you wiggle the mouse, but allow them when
-you click &mdash; it can reject the request.
+it could reject grabs when you wiggle the mouse, but allow them when you click
+&mdash; it can reject the request.
 
 From the server's perspective, they can simply send a incrementing integer with
 each input event, and record the serials which are considered valid for a

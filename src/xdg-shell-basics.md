@@ -23,4 +23,4 @@ implementation starts by handling the "ping" event - when the compositor sends
 it, you should respond with a "pong" request in a timely manner to hint that you
 haven't become deadlocked. Another request deals with the creation of
 positioners, the objects mentioned earlier, and we'll save the details on these
-for chapter 9. The request we want to look into first is `get_xdg_surface`.
+for chapter 10. The request we want to look into first is `get_xdg_surface`.

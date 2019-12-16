@@ -22,7 +22,7 @@ appropriate request from the `xdg_surface` interface:
 ```
 
 This new `xdg_toplevel` interface puts many requests and events at our disposal
-for managing the lifecycle of application windows. Chapter 9 explores these in
+for managing the lifecycle of application windows. Chapter 10 explores these in
 depth, but I know you're itching to get something on-screen. If you follow these
 steps, handling the `configure` and `ack_configure` riggings for XDG surface
 discussed in the previous chapter, and attach and commit a `wl_buffer` to our

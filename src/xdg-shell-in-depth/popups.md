@@ -26,7 +26,7 @@ one introduces a new concept: positioners. The purpose of the positioner is, as
 the name might suggest, to *position* the new popup. This is used to allow the
 compositor to participate in the positioning of popups using its priveleged
 information, for example to avoid having the popup extend past the edge of the
-display. We'll discuss positioners in chapter 9.4, for now you can simply create
+display. We'll discuss positioners in chapter 10.4, for now you can simply create
 one and pass it in without further configuration to achieve reasonably sane
 default behavior, utilizing the appropriate `xdg_wm_base` request:
 
@@ -40,7 +40,7 @@ So, in short, we can:
 
 1. Create a new `wl_surface`
 2. Obtain an `xdg_surface` for it
-3. Create a new `xdg_positioner`, saving its configuration for chapter 9.4
+3. Create a new `xdg_positioner`, saving its configuration for chapter 10.4
 4. Create an `xdg_popup` from our XDG surface and XDG positioner, assigning its
    parent to the `xdg_toplevel` we created earlier.
 
@@ -67,7 +67,7 @@ position of the popup relative to its parent surface.
 ```
 
 The client can influence these values with the XDG positioner, to be discussed
-in chapter 9.4.
+in chapter 10.4.
 
 ## Popup grabs
 
@@ -82,11 +82,11 @@ through the grab request:
 </request>
 ```
 
-This always has to be preceeded by some user input, such the right click event
-which summoned the context menu. Each qualifying input event comes with a serial
-value - this will be discussed in chapter 10 - which you can pass into the grab
-request to "authorize" it. The compositor can cancel your grab later, for
-example if the user presses the escape key or clicks outside of your surface.
+A prerequisite of this request is having received a qualifying input event, such
+as a right click. The serial from this input event should be used in this
+request. These semantics are covered in detail in chapter 9. The compositor can
+cancel this grab later, for example if the user presses escape or clicks outside
+of your popup.
 
 ## Dismissal
 
