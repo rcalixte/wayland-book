@@ -41,6 +41,7 @@
     - [XKB, briefly](./seat/xkb.md)
     - [Keyboard input](./seat/keyboard.md)
     - [Touch input](./seat/touch.md)
+    - [Expanding our example code](./seat/example.md)
 - [XDG shell in depth](./xdg-shell-in-depth.md)
     - [Configuration & lifecycle](./xdg-shell-in-depth/configuration.md)
     - [Popups & parent windows](./xdg-shell-in-depth/popups.md)
