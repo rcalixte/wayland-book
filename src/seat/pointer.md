@@ -54,8 +54,8 @@ The only new API introduced here is `wl_pointer.set_cursor`:
 The `serial` here has to come from the `enter` event. The `hotspot_x` and
 `hotspot_y` arguments specify the cursor-surface-local coordinates of the
 "hotspot", or the effective position of the pointer within the cursor image
-(e.g. at the tip of an arrow). You'll also note that the surface can be null
-&mdash; use this to remove the cursor image entirely.
+(e.g. at the tip of an arrow). Note also that the surface can be null &mdash;
+use this to hide the cursor entirely.
 
 If you're looking for a good source of cursor images, libwayland ships with a
 separate `wayland-cursor` library, which can load X cursor themes from disk and
