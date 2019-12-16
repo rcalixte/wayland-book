@@ -6,11 +6,11 @@ involved in keyboard input, and XKB is the recommended way of handling them on
 Wayland.
 
 When you press a key on your keyboard, it sends a *scancode* to the computer,
-which is simply a number assigned to that key. On my keyboard, scancode 1 is
-the Escape key, the '1' key is scancode 2, 'a' is 30, Shift is 42, and so on.
-I use a US ANSI keyboard layout, but there are many other layouts, and their
-scancodes differ. On my friend's German keyboard, scancode 12 produces 'ß',
-while mine produces '-'.
+which is simply a number assigned to that physical key. On my keyboard, scancode
+1 is the Escape key, the '1' key is scancode 2, 'a' is 30, Shift is 42, and so
+on.  I use a US ANSI keyboard layout, but there are many other layouts, and
+their scancodes differ. On my friend's German keyboard, scancode 12 produces
+'ß', while mine produces '-'.
 
 To solve this problem, we use a library called "xkbcommon", which is named for
 its role as the common code from XKB (X KeyBoard) extracted into a standalone
@@ -34,8 +34,8 @@ grab the header, `xkbcommon/xkbcommon.h`. Most programs which utilize xkbcommon
 will have to manage three objects:
 
 - xkb_context: a handle used for configuring other XKB resources
-- xkb_keymap: a mapping from scancodes to keys
-- xkb_state: a state machine that turns keys into Unicode codepoints
+- xkb_keymap: a mapping from scancodes to key symbls
+- xkb_state: a state machine that turns key symbols into UTF-8 strings
 
 The process for setting this up usually goes as follows:
 
