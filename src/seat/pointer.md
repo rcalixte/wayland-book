@@ -115,7 +115,7 @@ additional events exist which increase the specificity of the axis event:
 
 The axis_source event tells you what kind of axis was actuated - a scroll wheel,
 or a finger on a touchpad, tilting a rocker to the side, or something more
-novel. This event is simple, but the remainder are not:
+novel. This event is simple, but the remainder are less so:
 
 ```xml
 <event name="axis_stop" since="5">
