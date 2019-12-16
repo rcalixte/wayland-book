@@ -113,3 +113,14 @@ frame.
 If this sounds too complicated, don't sweat it. Many applications don't have to
 worry about input frames. It's only when you start doing more complex input
 event handling that you'll want to concern yourself with this.
+
+## Releasing devices
+
+When you're done using a device, each interface has a `release` event you can
+use to clean it up. It'll look something like this:
+
+```xml
+<request name="release" type="destructor" />
+```
+
+Easy enough.
