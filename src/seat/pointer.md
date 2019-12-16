@@ -33,8 +33,47 @@ more brief:
 ```
 
 Once a pointer has entered your surface, you'll start receiving additional
-events for it. The most basic of these is motion, button, and axis, though there
-are more.
+events for it, which we'll discuss shortly. The first thing you will likely want
+to do, however, is provide a cursor image. The process is as such:
+
+1. Create a new `wl_surface` with the `wl_compositor`.
+2. Use `wl_pointer.set_cursor` to attach that surface to the pointer.
+3. Attach a cursor image `wl_buffer` to the surface and commit it.
+
+The only new API introduced here is `wl_pointer.set_cursor`:
+
+```xml
+<request name="set_cursor">
+  <arg name="serial" type="uint" />
+  <arg name="surface" type="object" interface="wl_surface" allow-null="true" />
+  <arg name="hotspot_x" type="int" />
+  <arg name="hotspot_y" type="int" />
+</request>
+```
+
+The `serial` here has to come from the `enter` event. The `hotspot_x` and
+`hotspot_y` arguments specify the cursor-surface-local coordinates of the
+"hotspot", or the effective position of the pointer within the cursor image
+(e.g. at the tip of an arrow). You'll also note that the surface can be null
+&mdash; use this to remove the cursor image entirely.
+
+If you're looking for a good source of cursor images, libwayland ships with a
+separate `wayland-cursor` library, which can load X cursor themes from disk and
+create `wl_buffers` for them. See `wayland-cursor.h` for details, or the updates
+to our example client in chapter 9.5.
+
+<small>
+  <em>
+    Note: wayland-cursor includes code for dealing with animated cursors, which
+    weren't even cool in 1998. If I were you, I wouldn't bother with that.  No
+    one has ever complained that my Wayland clients don't support animated
+    cursors.
+  </em>
+</small>
+
+After the cursor has entered your surface and you have attached an appropriate
+cursor, you're ready to start processing input events. There are motion, button,
+and axis events.
 
 ## Motion events
 
