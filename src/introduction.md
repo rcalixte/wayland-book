@@ -36,4 +36,5 @@ popular tiling window manager i3. It is now the most popular tiling Wayland
 compositor by any measure: users, commit count, and influence. Following its
 success, Drew gave back to the Wayland community by starting wlroots:
 unopinionated, composable modules for building a Wayland compositor. Today it is
-the foundation for dozens of independent compositors.
+the foundation for dozens of independent compositors, and Drew is one of the
+foremost experts in Wayland.
