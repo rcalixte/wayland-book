@@ -12,8 +12,8 @@ rest of the book is equally applicable to any implementation.
 
 Wayland protocols are defined by XML files. If you locate and open "wayland.xml"
 in your favorite text editor, you will find the XML specification for the "core"
-Wayland protocol. This is a high-level protocol - built on top the wire protocol
-that we'll discuss in the next chapter. Most of this book is devoted to
+Wayland protocol. This is a high-level protocol - built on top of the wire
+protocol that we'll discuss in the next chapter. Most of this book is devoted to
 explaining this file.
 
 ## wayland-scanner
