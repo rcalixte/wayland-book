@@ -20,7 +20,7 @@ following primitive types:
 In addition to these primitives, the following other types are used:
 
 **string**: A string, prefixed with a 32-bit integer specifying its length (in
-bytes), followed by the string contents and a NULL terminator, padded to 32
+bytes), followed by the string contents and a NUL terminator, padded to 32
 bits with undefined data. The encoding is not specified, but in practice UTF-8
 is used.
 
@@ -66,7 +66,7 @@ header, or as an `object_id` argument. The client allocates IDs in the range of
 0xFFFFFFFF]`. IDs begin at the lower end of this bound and increment with each
 new object allocation.
 
-An object ID of 0 represents a `NULL` object; that is, a non-existent object or
+An object ID of 0 represents a null object; that is, a non-existent object or
 the explicit lack of an object.
 
 ## Transports
