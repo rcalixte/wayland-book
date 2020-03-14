@@ -122,6 +122,11 @@ in the coordinate space of the touched surface. The orientation event rotates
 this ellipse by specifying the angle between the major axis and the Y-axis of
 the touched surface, in degrees.
 
+---
+
+Touch is the last of the input devices supported by the Wayland protocol. With
+this knowledge in hand, let's update our example code.
+
 [^1]: Emphasis on "might" &mdash; don't make any assumptions based on the repeated use of a touch point ID.
 
 [^2]: This means that separate timestamps can be compared to each other to obtain the time between events, but are not comparible to wall-clock time.
