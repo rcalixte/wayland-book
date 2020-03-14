@@ -30,8 +30,8 @@ codepoints* the user is trying to type.
 ## Using XKB
 
 So how is xkbcommon actually used? Well, the first step is to link to it and
-grab the header, `xkbcommon/xkbcommon.h`. Most programs which utilize xkbcommon
-will have to manage three objects:
+grab the header, `xkbcommon/xkbcommon.h`.[^1] Most programs which utilize
+xkbcommon will have to manage three objects:
 
 - xkb_context: a handle used for configuring other XKB resources
 - xkb_keymap: a mapping from scancodes to key symbls
@@ -53,9 +53,11 @@ The process for setting this up usually goes as follows:
 5. Feed the scancodes into `xkb_state_key_get_one_sym` to get keysyms, and into
    `xkb_state_key_get_utf8` to get UTF-8 strings. Tada!
 
-<em>* Wait, how do I do that? Turn the page to find out...</em>
+<div style="text-align: right">
+  <em>* These steps are discussed in the next section.</em>
+</div>
 
-In code terms, the process looks like the following:
+In terms of code, the process looks like the following:
 
 ```c
 #include <xkbcommon/xkbcommon.h> // -lxkbcommon
@@ -91,3 +93,5 @@ printf("UTF-8 input: %s\n", buf);
 ```
 
 Equipped with these details, we're ready to tackle processing keyboard input.
+
+[^1]: xkbcommon ships with a pc file: use `pkgconf --cflags xkbcommon` and `pkgconf --libs xkbcommon`, or your build system's preferred way of consuming pc files.
