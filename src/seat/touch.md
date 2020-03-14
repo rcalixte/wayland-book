@@ -11,15 +11,15 @@ assigned an ID which is unique among all currently active points where the
 screen is being touched, but might be reused if you lift your finger and press
 again.[^1]
 
-Like the other input devices, you can obtain a `wl_touch` resource by using
-`wl_seat.get_touch`, and you can send a "release" request when you're done with
-it.
+Similarly to other input devices, you may obtain a `wl_touch` resource with
+`wl_seat.get_touch`, and you should send a "release" request when you're
+finished with it.
 
 ## Touch frames
 
-Like pointers, a single frame of touch processing on the server could carry
-information about lots of changes, but the server sends each change as discrete
-Wayland events. The `wl_touch.frame` event is used to group these together.
+Like pointers, a single frame of touch processing on the server might carry
+information about many changes, but the server sends these as discrete Wayland
+events. The `wl_touch.frame` event is used to group these together.
 
 ```
 <event name="frame"></event>
@@ -53,8 +53,8 @@ from the device.
 ```
 
 The "x" and "y" coordinates are fixed-point coordinates in the coordinate space
-of the surface which was touched - specified by the "surface" argument. The time
-is a monotonically increasing timestamp with an arbitrary epoch, in
+of the surface which was touched - which is given in the "surface" argument.
+The time is a monotonically increasing timestamp with an arbitrary epoch, in
 milliseconds.[^2] Note also the inclusion of a serial, which can be included in
 future requests to associate them with this input event.
 
@@ -76,7 +76,7 @@ device.
 The "x" and "y" coordinates here are in the relative coordinate space of the
 surface which the "enter" event was sent for.
 
-## Guesture cancellation
+## Gesture cancellation
 
 Touch events often have to meet some threshold before they're recognized as a
 gesture. For example, swiping across the screen from left to right could be used
@@ -94,7 +94,7 @@ taking over.
 <event name="cancel"></event>
 ```
 
-When you receive a "cancel" event, all active touch points become invalid.
+When you receive this event, all active touch points are cancelled.
 
 ## Shape and orientation
 
@@ -123,4 +123,5 @@ this ellipse by specifying the angle between the major axis and the Y-axis of
 the touched surface, in degrees.
 
 [^1]: Emphasis on "might" &mdash; don't make any assumptions based on the repeated use of a touch point ID.
+
 [^2]: This means that separate timestamps can be compared to each other to obtain the time between events, but are not comparible to wall-clock time.
