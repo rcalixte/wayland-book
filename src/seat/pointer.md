@@ -75,6 +75,22 @@ After the cursor has entered your surface and you have attached an appropriate
 cursor, you're ready to start processing input events. There are motion, button,
 and axis events.
 
+## Pointer frames
+
+A single frame of input processing on the server could carry information about
+lots of changes &mdash; for example, polling the mouse once could return, in a
+single packet, an updated position and the release of a button. The server sends
+these changes as separate *Wayland* events, and uses the "frame" event to group
+them together.
+
+```
+<event name="frame"></event>
+```
+
+Clients should accumulate all `wl_pointer` events as they're received, then
+process pending inputs as a single pointer event once the "frame" event is
+received.
+
 ## Motion events
 
 Motion events are specified in the same coordinate space as the `enter` event
@@ -176,3 +192,5 @@ arbitrary scale from discrete steps of, for example, a scroll wheel where each
 `axis_stop` event signals that a discrete user motion has completed, and is used
 when accounting for a scrolling event which takes place over several frames. Any
 future events should be interpreted as a separate motion.
+
+## Frame events
