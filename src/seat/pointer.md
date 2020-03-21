@@ -192,5 +192,3 @@ arbitrary scale from discrete steps of, for example, a scroll wheel where each
 `axis_stop` event signals that a discrete user motion has completed, and is used
 when accounting for a scrolling event which takes place over several frames. Any
 future events should be interpreted as a separate motion.
-
-## Frame events
