@@ -366,7 +366,206 @@ confusing, though. All we're doing here is pretty-printing the accumulated state
 for this frame to stderr. If you compile and run this again now, you should be
 able to wiggle your mouse over the window and see input events printed out!
 
+## Rigging up keyboard events
+
+Let's update our `client_state` struct with some fields to store XKB state.
+
+```diff
+@@ -105,6 +107,9 @@ struct client_state {
+        int width, height;
+        bool closed;
+        struct pointer_event pointer_event;
++       struct xkb_state *xkb_state;
++       struct xkb_context *xkb_context;
++       struct xkb_keymap *xkb_keymap;
+};
+```
+
+We need the xkbcommon headers to define these. While we're at it, I'm going to
+pull in `assert.h` as well:
+
+```diff
+@@ -1,4 +1,5 @@
+ #define _POSIX_C_SOURCE 200112L
++#include <assert.h>
+ #include <errno.h>
+ #include <fcntl.h>
+ #include <limits.h>
+@@ -9,6 +10,7 @@
+ #include <time.h>
+ #include <unistd.h>
+ #include <wayland-client.h>
++#include <xkbcommon/xkbcommon.h>
+ #include "xdg-shell-client-protocol.h"
+```
+
+We'll also need to initialize the xkb_context in our main function:
+
+```diff
+@@ -603,6 +649,7 @@ main(int argc, char *argv[])
+        state.height = 480;
+        state.wl_display = wl_display_connect(NULL);
+        state.wl_registry = wl_display_get_registry(state.wl_display);
++       state.xkb_context = xkb_context_new(XKB_CONTEXT_NO_FLAGS);
+        wl_registry_add_listener(state.wl_registry, &wl_registry_listener, &state);
+        wl_display_roundtrip(state.wl_display);
+```
+
+Next, let's update our seat capabilities function to rig up our keyboard
+listener, too.
+
+```diff
+        } else if (!have_pointer && state->wl_pointer != NULL) {
+                wl_pointer_release(state->wl_pointer);
+                state->wl_pointer = NULL;
+        }
++
++       if (have_keyboard && state->wl_keyboard == NULL) {
++               state->wl_keyboard = wl_seat_get_keyboard(state->wl_seat);
++               wl_keyboard_add_listener(state->wl_keyboard,
++                               &wl_keyboard_listener, state);
++       } else if (!have_keyboard && state->wl_keyboard != NULL) {
++               wl_keyboard_release(state->wl_keyboard);
++               state->wl_keyboard = NULL;
++       }
+ }
+```
+
+We'll have to define the `wl_keyboard_listener` we use here, too.
+
+```diff
++const static struct wl_keyboard_listener wl_keyboard_listener = {
++       .keymap = wl_keyboard_keymap,
++       .enter = wl_keyboard_enter,
++       .leave = wl_keyboard_leave,
++       .key = wl_keyboard_key,
++       .modifiers = wl_keyboard_modifiers,
++       .repeat_info = wl_keyboard_repeat_info,
++};
+```
+
+And now, the meat of the changes. Let's start with the keymap:
+
+```diff
++static void
++wl_keyboard_keymap(void *data, struct wl_keyboard *wl_keyboard,
++               uint32_t format, int32_t fd, uint32_t size)
++{
++       struct client_state *client_state = data;
++       assert(format == WL_KEYBOARD_KEYMAP_FORMAT_XKB_V1);
++
++       char *map_shm = mmap(NULL, size, PROT_READ, MAP_SHARED, fd, 0);
++       assert(map_shm != MAP_FAILED);
++
++       struct xkb_keymap *xkb_keymap = xkb_keymap_new_from_string(
++                       client_state->xkb_context, map_shm,
++                       XKB_KEYMAP_FORMAT_TEXT_V1, XKB_KEYMAP_COMPILE_NO_FLAGS);
++       munmap(map_shm, size);
++       close(fd);
++
++       struct xkb_state *xkb_state = xkb_state_new(xkb_keymap);
++       xkb_keymap_unref(client_state->xkb_keymap);
++       xkb_state_unref(client_state->xkb_state);
++       client_state->xkb_keymap = xkb_keymap;
++       client_state->xkb_state = xkb_state;
++}
+```
+
+Now we can see why we added `assert.h` &mdash; we're using it here to make sure
+that the keymap format is the one we expect. Then, we use mmap to map the file
+descriptor the compositor sent us to a `char *` pointer we can pass into
+`xkb_keymap_new_from_string`. Don't forget to munmap and close that fd
+afterwards &mdash; then we set up our XKB state. Note as well that we have also
+unrefed any previous XKB keymap or state that we had set up in a prior call to
+this function, in case the compositor changes the keymap at runtime.[^1]
+
+```diff
++static void
++wl_keyboard_enter(void *data, struct wl_keyboard *wl_keyboard,
++               uint32_t serial, struct wl_surface *surface,
++               struct wl_array *keys)
++{
++       struct client_state *client_state = data;
++       fprintf(stderr, "keyboard enter; keys pressed are:\n");
++       uint32_t *key;
++       wl_array_for_each(key, keys) {
++               char buf[128];
++               xkb_keysym_t sym = xkb_state_key_get_one_sym(
++                               client_state->xkb_state, *key + 8);
++               xkb_keysym_get_name(sym, buf, sizeof(buf));
++               fprintf(stderr, "sym: %-12s (%d), ", buf, sym);
++               xkb_state_key_get_utf8(client_state->xkb_state,
++                               *key + 8, buf, sizeof(buf));
++               fprintf(stderr, "utf8: '%s'\n", buf);
++       }
++}
+```
+
+When the keyboard "enters" our surrface, we have received keyboard focus. The
+compositor forwards a list of keys which were already pressed at that time, and
+here we just enumerate them and log their keysym names and UTF-8 equivalent.
+We'll do something similar when keys are pressed:
+
+```diff
++static void
++wl_keyboard_key(void *data, struct wl_keyboard *wl_keyboard,
++               uint32_t serial, uint32_t time, uint32_t key, uint32_t state)
++{
++       struct client_state *client_state = data;
++       char buf[128];
++       uint32_t keycode = key + 8;
++       xkb_keysym_t sym = xkb_state_key_get_one_sym(
++                       client_state->xkb_state, keycode);
++       xkb_keysym_get_name(sym, buf, sizeof(buf));
++       const char *action =
++               state == WL_KEYBOARD_KEY_STATE_PRESSED ? "press" : "release";
++       fprintf(stderr, "key %s: sym: %-12s (%d), ", action, buf, sym);
++       xkb_state_key_get_utf8(client_state->xkb_state, keycode,
++                       buf, sizeof(buf));
++       fprintf(stderr, "utf8: '%s'\n", buf);
++}
+```
+
+And finally, we add small implementations of the three remaining events:
+
+```diff
++static void
++wl_keyboard_leave(void *data, struct wl_keyboard *wl_keyboard,
++               uint32_t serial, struct wl_surface *surface)
++{
++       fprintf(stderr, "keyboard leave\n");
++}
++
++static void
++wl_keyboard_modifiers(void *data, struct wl_keyboard *wl_keyboard,
++               uint32_t mods_latched, uint32_t mods_locked,
++               uint32_t group)
++{
++       struct client_state *client_state = data;
++       xkb_state_update_mask(client_state->xkb_state,
++               mods_depressed, mods_latched, mods_locked, 0, 0, group);
++}
++
++static void
++wl_keyboard_repeat_info(void *data, struct wl_keyboard *wl_keyboard,
++               int32_t rate, int32_t delay)
++{
++       /* Left as an exercise for the reader */
++}
+```
+
+For modifiers, we could decode these further, but most applications won't need
+to. We just update the XKB state here. As for handling key repeat &mdash; this
+has a lot of constraints particular to your application. Do you want to repeat
+text input? Do you want to repeat keyboard shortcuts? How does the timing of
+these interact with your event loop? The answers to these questions is left for
+you to decide.
+
+If you compile this again, you should be able to start typing into the window
+and see your input printed into the log. Huzzah!
+
 ## TODO
 
-- keyboard input
-- pointer input
+- touch input
+
+[^1]: This actually does happen in practice!
