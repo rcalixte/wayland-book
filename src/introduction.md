@@ -15,15 +15,17 @@ design. Within these pages you should find many "aha!" moments as the intuitive
 design choices of Wayland become clear, which should help to keep the pages
 turning. Welcome to the future of open source graphics!
 
-**Notice**: this is a *draft*. Chapters 1-8 are completed, but may be updated
-later, and chapters 9 forward in large part remain to be written.
+**Notice**: this is a *draft*. Chapters 1-10 are more or less complete, but may
+be updated later. Chapters 11 forward in large part remain to be written.
 
 **TODO**
 
 - Expand on resource lifetimes and avoiding race conditions in chapter 2.4
 - Move linux-dmabuf details to the appendix, add note about wl_drm & mesa
+- Rewrite the introduction text
+- Add example code for interactive move, to demonstrate the use of serials
 - Use &mdash; instead of - where appropriate
-- Generate PDFs and EPUBs
+- Prepare PDFs and EPUBs
 
 ## About the author
 
