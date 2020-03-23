@@ -564,8 +564,297 @@ you to decide.
 If you compile this again, you should be able to start typing into the window
 and see your input printed into the log. Huzzah!
 
-## TODO
+## Rigging up touch events
 
-- touch input
+Finally, we'll add support for touch-capable devices. Like pointers, a "frame"
+event exists for touch devices. However, they're further complicated by the
+possibility that mulitple touch points may be updated within a single frame.
+We'll add some more structures and enums to represent the accumulated state:
+
+```diff
++enum touch_event_mask {
++       TOUCH_EVENT_DOWN = 1 << 0,
++       TOUCH_EVENT_UP = 1 << 1,
++       TOUCH_EVENT_MOTION = 1 << 2,
++       TOUCH_EVENT_CANCEL = 1 << 3,
++       TOUCH_EVENT_SHAPE = 1 << 4,
++       TOUCH_EVENT_ORIENTATION = 1 << 5,
++};
++
++struct touch_point {
++       bool valid;
++       int32_t id;
++       uint32_t event_mask;
++       wl_fixed_t surface_x, surface_y;
++       wl_fixed_t major, minor;
++       wl_fixed_t orientation;
++};
++
++struct touch_event {
++       uint32_t event_mask;
++       uint32_t time;
++       uint32_t serial;
++       struct touch_point points[10];
++};
+```
+
+Note that I've arbitrarily choosen 10 touchpoints here, with the assumption that
+most users will only ever use that many fingers. For larger, multi-user touch
+screens, you may need a higher limit. Additionally, some touch hardware supports
+fewer than 10 touch points concurrently &mdash; 8 is also common, and hardware
+which supports fewer still is common among older devices.
+
+We'll add this struct to `client_state`:
+
+```diff
+@@ -110,6 +135,7 @@ struct client_state {
+        struct xkb_state *xkb_state;
+        struct xkb_context *xkb_context;
+        struct xkb_keymap *xkb_keymap;
++       struct touch_event touch_event;
+ };
+```
+
+And we'll update the seat capabilities handler to rig up a listener when touch
+support is available.
+
+```diff
+        } else if (!have_keyboard && state->wl_keyboard != NULL) {
+                wl_keyboard_release(state->wl_keyboard);
+                state->wl_keyboard = NULL;
+        }
+
++       if (have_touch && state->wl_touch == NULL) {
++               state->wl_touch = wl_seat_get_touch(state->wl_seat);
++               wl_touch_add_listener(state->wl_touch,
++                               &wl_touch_listener, state);
++       } else if (!have_touch && state->wl_touch != NULL) {
++               wl_touch_release(state->wl_touch);
++               state->wl_touch = NULL;
++       }
+ }
+```
+
+We've repeated again the pattern of handling both the appearance and
+disappearance of touch capabilities on the seat, so we're robust to devices
+appearing and disappearing at runtime. It's less common for touch devices to be
+hotplugged, though.
+
+Here's the listener itself:
+
+```diff
++const static struct wl_touch_listener wl_touch_listener = {
++       .down = wl_touch_down,
++       .up = wl_touch_up,
++       .motion = wl_touch_motion,
++       .frame = wl_touch_frame,
++       .cancel = wl_touch_cancel,
++       .shape = wl_touch_shape,
++       .orientation = wl_touch_orientation,
++};
+```
+
+To deal with multiple touch points, we'll need to write a small helper function:
+
+```diff
++static struct touch_point *
++get_touch_point(struct client_state *client_state, int32_t id)
++{
++       struct touch_event *touch = &client_state->touch_event;
++       const size_t nmemb = sizeof(touch->points) / sizeof(struct touch_point);
++       int invalid = -1;
++       for (size_t i = 0; i < nmemb; ++i) {
++               if (touch->points[i].id == id) {
++                       return &touch->points[i];
++               }
++               if (invalid == -1 && !touch->points[i].valid) {
++                       invalid = i;
++               }
++       }
++       if (invalid == -1) {
++               return NULL;
++       }
++       touch->points[invalid].valid = true;
++       touch->points[invalid].id = id;
++       return &touch->points[invalid];
++}
+```
+
+The basic purpose of this function is to pick a `touch_point` from the array we
+added to the `touch_event` struct, based on the touch ID we're receiving events
+for. If we find an existing `touch_point` for that ID, we return it. If not, we
+return the first available touch point. In case we run out, we return NULL.
+
+Now we can take advantage of this to implement our first function: touch up.
+
+```diff
++static void
++wl_touch_down(void *data, struct wl_touch *wl_touch, uint32_t serial,
++               uint32_t time, struct wl_surface *surface, int32_t id,
++               wl_fixed_t x, wl_fixed_t y)
++{
++       struct client_state *client_state = data;
++       struct touch_point *point = get_touch_point(client_state, id);
++       if (point == NULL) {
++               return;
++       }
++       point->event_mask |= TOUCH_EVENT_UP;
++       point->surface_x = wl_fixed_to_double(x),
++               point->surface_y = wl_fixed_to_double(y);
++       client_state->touch_event.time = time;
++       client_state->touch_event.serial = serial;
++}
+```
+
+Like the pointer events, we're also simply accumulating this state for later
+use. We don't yet know if this event represents a complete touch frame. Let's
+add something similar for touch up:
+
+```diff
++static void
++wl_touch_up(void *data, struct wl_touch *wl_touch, uint32_t serial,
++               uint32_t time, int32_t id)
++{
++       struct client_state *client_state = data;
++       struct touch_point *point = get_touch_point(client_state, id);
++       if (point == NULL) {
++               return;
++       }
++       point->event_mask |= TOUCH_EVENT_UP;
++}
+```
+
+And for motion:
+
+```diff
++static void
++wl_touch_motion(void *data, struct wl_touch *wl_touch, uint32_t time,
++               int32_t id, wl_fixed_t x, wl_fixed_t y)
++{
++       struct client_state *client_state = data;
++       struct touch_point *point = get_touch_point(client_state, id);
++       if (point == NULL) {
++               return;
++       }
++       point->event_mask |= TOUCH_EVENT_MOTION;
++       point->surface_x = x, point->surface_y = y;
++       client_state->touch_event.time = time;
++}
+```
+
+The touch cancel event is somewhat different, as it "cancels" all active touch
+points at once. We'll just store this in the `touch_event`'s top-level event
+mask.
+
+```diff
++static void
++wl_touch_cancel(void *data, struct wl_touch *wl_touch)
++{
++       struct client_state *client_state = data;
++       client_state->touch_event.event_mask |= TOUCH_EVENT_CANCEL;
++}
+```
+
+The shape and orientation events are similar to up, down, and move, however, in
+that they inform us about the dimensions of a specific touch point.
+
+```diff
++static void
++wl_touch_shape(void *data, struct wl_touch *wl_touch,
++               int32_t id, wl_fixed_t major, wl_fixed_t minor)
++{
++       struct client_state *client_state = data;
++       struct touch_point *point = get_touch_point(client_state, id);
++       if (point == NULL) {
++               return;
++       }
++       point->event_mask |= TOUCH_EVENT_SHAPE;
++       point->major = major, point->minor = minor;
++}
++
++static void
++wl_touch_orientation(void *data, struct wl_touch *wl_touch,
++               int32_t id, wl_fixed_t orientation)
++{
++       struct client_state *client_state = data;
++       struct touch_point *point = get_touch_point(client_state, id);
++       if (point == NULL) {
++               return;
++       }
++       point->event_mask |= TOUCH_EVENT_ORIENTATION;
++       point->orientation = orientation;
++}
+```
+
+And finally, upon receiving a frame event, we can interpret all of this
+accumulated state as a single input event, much like our pointer code.
+
+```diff
++static void
++wl_touch_frame(void *data, struct wl_touch *wl_touch)
++{
++       struct client_state *client_state = data;
++       struct touch_event *touch = &client_state->touch_event;
++       const size_t nmemb = sizeof(touch->points) / sizeof(struct touch_point);
++       fprintf(stderr, "touch event @ %d:\n", touch->time);
++
++       for (size_t i = 0; i < nmemb; ++i) {
++               struct touch_point *point = &touch->points[i];
++               if (!point->valid) {
++                       continue;
++               }
++               fprintf(stderr, "point %d: ", touch->points[i].id);
++
++               if (point->event_mask & TOUCH_EVENT_DOWN) {
++                       fprintf(stderr, "down %f,%f ",
++                                       wl_fixed_to_double(point->surface_x),
++                                       wl_fixed_to_double(point->surface_y));
++               }
++
++               if (point->event_mask & TOUCH_EVENT_UP) {
++                       fprintf(stderr, "up ");
++               }
++
++               if (point->event_mask & TOUCH_EVENT_MOTION) {
++                       fprintf(stderr, "motion %f,%f ",
++                                       wl_fixed_to_double(point->surface_x),
++                                       wl_fixed_to_double(point->surface_y));
++               }
++
++               if (point->event_mask & TOUCH_EVENT_SHAPE) {
++                       fprintf(stderr, "shape %fx%f ",
++                                       wl_fixed_to_double(point->major),
++                                       wl_fixed_to_double(point->minor));
++               }
++
++               if (point->event_mask & TOUCH_EVENT_ORIENTATION) {
++                       fprintf(stderr, "orientation %f ",
++                                       wl_fixed_to_double(point->orientation));
++               }
++
++               point->valid = false;
++               fprintf(stderr, "\n");
++       }
++}
+```
+
+Compile and run this again, and you'll be able to see touch events printed to
+stderr as you interact with your touch device (assuming you have such a device
+to test with). And now our client supports input!
+
+## What's next?
+
+There are a lot of different kinds of input devices, so extending our code to
+support them was a fair bit of work &mdash; our code has grown by 2.5&times; in
+this chapter alone. The rewards should feel pretty great, though, as you are now
+familiar with enough Wayland concepts (and code) that you can implement a lot of
+clients.
+
+There's still a little bit more to learn &mdash; in the last few chapters, we'll
+cover popup windows, context menus, interactive window moving and resizing,
+clipboard and drag & drop support, and, later, a handful of interesting protocol
+extensions which support more niche use-cases. I definitely recommend reading at
+least chapter 10.1 before you start building your own client, as it covers
+things like having the window resized at the compositor's request.
 
 [^1]: This actually does happen in practice!
