@@ -21,7 +21,7 @@ thus we call the software which does this the *compositor*.
 ## In practice
 
 There are many distinct software components in desktop ecosystem. There are
-tools like mesa for rendering (and each of its drivers), the Linux KMS/DRM
+tools like Mesa for rendering (and each of its drivers), the Linux KMS/DRM
 subsystem, buffer allocation with GBM, the userspace libdrm library, libinput
 and evdev, and much more still. Don't worry - expertise with most of these
 systems is not required for understanding Wayland, and in any case are largely

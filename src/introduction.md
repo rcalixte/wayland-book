@@ -21,7 +21,7 @@ be updated later. Chapters 11 forward in large part remain to be written.
 **TODO**
 
 - Expand on resource lifetimes and avoiding race conditions in chapter 2.4
-- Move linux-dmabuf details to the appendix, add note about wl_drm & mesa
+- Move linux-dmabuf details to the appendix, add note about wl_drm & Mesa
 - Rewrite the introduction text
 - Add example code for interactive move, to demonstrate the use of serials
 - Use &mdash; instead of - where appropriate
