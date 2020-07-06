@@ -71,7 +71,7 @@ Before we get to those, let's cover some common semantics.
 
 Some actions that a Wayland client may perform require a trivial form of
 authentication in the form of input event serials. For example, a client which
-opens a popup (a context menu summoned with a rick click is one kind of popup)
+opens a popup (a context menu summoned with a right click is one kind of popup)
 may want to "grab" all input events server-side from the affected seat until the
 popup is dismissed.  To prevent abuse of this feature, the server can assign
 serials to each input event it sends, and require the client to include one of
@@ -116,7 +116,7 @@ event handling that you'll want to concern yourself with this.
 
 ## Releasing devices
 
-When you're done using a device, each interface has a `release` event you can
+When you're done using a device, each interface has a `release` request you can
 use to clean it up. It'll look something like this:
 
 ```xml

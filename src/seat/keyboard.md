@@ -165,7 +165,7 @@ The last event to consider is the "repeat_info" event:
 
 In Wayland, the client is responsible for implementing "key repeat" &mdash; the
 feature which continues to type characters as long as you've got the key held
-doooooown. This request is sent to inform the client of the user's preferences
+doooooown. This event is sent to inform the client of the user's preferences
 for key repeat settings. The "delay" is the number of milliseconds a key should
 be held down for before key repeat kicks in, and the "rate" is the number of
 characters per second to repeat until the key is released.

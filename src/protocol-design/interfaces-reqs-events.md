@@ -36,7 +36,7 @@ a specific output (the client might respond to this, for example, by adjusting
 its scale factor for a HiDPI display). Here's an example of such a message:
 
     0000000A    Object ID (10)
-    000B0000    Message length (12) and event opcode (0)
+    000C0000    Message length (12) and event opcode (0)
     00000005    Output (object ID): 5
 
 This message references another object, by its ID: the `wl_output` object which

@@ -37,7 +37,7 @@ The most important API of xdg-surface is this pair: `configure` and
 `ack_configure`. You may recall that a goal of Wayland is to make every frame
 perfect. That means no frames are shown with a half-applied state change, and to
 accomplish this we have to synchronize these changes between the client and
-server. For XDG surfaces, this pair of requests is the mechanism which supports
+server. For XDG surfaces, this pair of messages is the mechanism which supports
 this.
 
 We're only covering the basics for now, so we'll summarize the importance of

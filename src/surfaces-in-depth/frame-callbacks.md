@@ -53,7 +53,7 @@ with your last frame to calculate the progress of an animation or to scale input
 events.[^1]
 
 With frame callbacks in our toolbelt, why don't we update our application from
-chapter 7.2 so it scrolls a bit each frame? Let's start by adding a little bit
+chapter 7.3 so it scrolls a bit each frame? Let's start by adding a little bit
 of state to our `client_state` struct:
 
 ```diff
@@ -62,7 +62,7 @@ of state to our `client_state` struct:
 @@ -71,6 +71,8 @@ struct client_state {
  	struct xdg_surface *xdg_surface;
  	struct xdg_toplevel *xdg_toplevel;
- 	/* State */
++	/* State */
 +	float offset;
 +	uint32_t last_frame;
  };
