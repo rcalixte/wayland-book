@@ -52,10 +52,10 @@ after the client agreed it had been destroyed.
 
 There are two versioning models in use in Wayland protocols: unstable and
 stable. Both models only allow for backwards-compatible changes, but when a
-protocol transitions from unstable to stable, breaking changes are permitted.
-This gives protocols an incubation period during which we can test them in
-practice, then apply what we've learned to a protocol that should stand the test
-of time in one big breaking change[^2].
+protocol transitions from unstable to stable, one last breaking change is
+permitted. This gives protocols an incubation period during which we can test
+them in practice, then apply our insights in one last big set of breaking
+changes to make a protocol that should stand the test of time[^2].
 
 To make a backwards-compatible change, you may only add new events or requests
 to the end of an interface, or new members to the end of an enum. Additionally,
