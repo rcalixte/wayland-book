@@ -265,7 +265,7 @@ of axis events. Our code to handle these ends up something like this:
 +               uint32_t axis, int32_t discrete)
 +{
 +       struct client_state *client_state = data;
-+       client_state->pointer_event.event_mask |= POINTER_EVENT_AXIS_STOP;
++       client_state->pointer_event.event_mask |= POINTER_EVENT_AXIS_DISCRETE;
 +       client_state->pointer_event.axes[axis].valid = true;
 +       client_state->pointer_event.axes[axis].discrete = discrete;
 +}
@@ -339,7 +339,7 @@ Speaking of which, it's time for the main attraction: our "frame" handler.
 +                       }
 +                       fprintf(stderr, "%s axis ", axis_name[i]);
 +                       if (event->event_mask & POINTER_EVENT_AXIS) {
-+                               fprintf(stderr, "value %d ", wl_fixed_to_double(
++                               fprintf(stderr, "value %f ", wl_fixed_to_double(
 +                                                       event->axes[i].value));
 +                       }
 +                       if (event->event_mask & POINTER_EVENT_AXIS_DISCRETE) {
