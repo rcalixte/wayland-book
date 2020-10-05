@@ -64,7 +64,7 @@ also rig up that listener:
 +       fprintf(stderr, "seat name: %s\n", name);
 +}
 +
-+const static struct wl_seat_listener wl_seat_listener = {
++static const struct wl_seat_listener wl_seat_listener = {
 +       .capabilities = wl_seat_capabilities,
 +       .name = wl_seat_name,
 +};
@@ -157,7 +157,7 @@ We also configured a listener for the pointer. Let's add the struct for that,
 too:
 
 ```diff
-+const static struct wl_pointer_listener wl_pointer_listener = {
++static const struct wl_pointer_listener wl_pointer_listener = {
 +       .enter = wl_pointer_enter,
 +       .leave = wl_pointer_leave,
 +       .motion = wl_pointer_motion,
@@ -434,7 +434,7 @@ listener, too.
 We'll have to define the `wl_keyboard_listener` we use here, too.
 
 ```diff
-+const static struct wl_keyboard_listener wl_keyboard_listener = {
++static const struct wl_keyboard_listener wl_keyboard_listener = {
 +       .keymap = wl_keyboard_keymap,
 +       .enter = wl_keyboard_enter,
 +       .leave = wl_keyboard_leave,
@@ -643,7 +643,7 @@ hotplugged, though.
 Here's the listener itself:
 
 ```diff
-+const static struct wl_touch_listener wl_touch_listener = {
++static const struct wl_touch_listener wl_touch_listener = {
 +       .down = wl_touch_down,
 +       .up = wl_touch_up,
 +       .motion = wl_touch_motion,

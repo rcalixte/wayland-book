@@ -105,11 +105,11 @@ In the `main` function, let's register a callback for our first new frame:
 Then implement it like so:
 
 ```diff
-@@ -147,6 +150,38 @@ const static struct xdg_wm_base_listener xdg_wm_base_listener = {
+@@ -147,6 +150,38 @@ static const struct xdg_wm_base_listener xdg_wm_base_listener = {
  	.ping = xdg_wm_base_ping,
  };
  
-+const static struct wl_callback_listener wl_surface_frame_listener;
++static const struct wl_callback_listener wl_surface_frame_listener;
 +
 +static void
 +wl_surface_frame_done(void *data, struct wl_callback *cb, uint32_t time)
@@ -137,7 +137,7 @@ Then implement it like so:
 +	state->last_frame = time;
 +}
 +
-+const static struct wl_callback_listener wl_surface_frame_listener = {
++static const struct wl_callback_listener wl_surface_frame_listener = {
 +	.done = wl_surface_frame_done,
 +};
 +

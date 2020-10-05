@@ -156,7 +156,7 @@ xdg_surface_configure(void *data,
     wl_surface_commit(state->wl_surface);
 }
 
-const static struct xdg_surface_listener xdg_surface_listener = {
+static const struct xdg_surface_listener xdg_surface_listener = {
     .configure = xdg_surface_configure,
 };
 
@@ -166,7 +166,7 @@ xdg_wm_base_ping(void *data, struct xdg_wm_base *xdg_wm_base, uint32_t serial)
     xdg_wm_base_pong(xdg_wm_base, serial);
 }
 
-const static struct xdg_wm_base_listener xdg_wm_base_listener = {
+static const struct xdg_wm_base_listener xdg_wm_base_listener = {
     .ping = xdg_wm_base_ping,
 };
 
@@ -196,7 +196,7 @@ registry_global_remove(void *data,
     /* This space deliberately left blank */
 }
 
-const static struct wl_registry_listener wl_registry_listener = {
+static const struct wl_registry_listener wl_registry_listener = {
     .global = registry_global,
     .global_remove = registry_global_remove,
 };

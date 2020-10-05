@@ -122,7 +122,7 @@ diff --git a/client.c b/client.c
 +	state->closed = true;
 +}
 +
-+const static struct xdg_toplevel_listener xdg_toplevel_listener = {
++static const struct xdg_toplevel_listener xdg_toplevel_listener = {
 +	.configure = xdg_toplevel_configure,
 +	.close = xdg_toplevel_close,
 +};
