@@ -302,16 +302,6 @@ Speaking of which, it's time for the main attraction: our "frame" handler.
 +                               wl_fixed_to_double(event->surface_y));
 +       }
 +
-+       if (event->event_mask & POINTER_EVENT_LEAVE) {
-+               fprintf(stderr, "leave");
-+       }
-+
-+       if (event->event_mask & POINTER_EVENT_MOTION) {
-+               fprintf(stderr, "motion %f, %f ",
-+                               wl_fixed_to_double(event->surface_x),
-+                               wl_fixed_to_double(event->surface_y));
-+       }
-+
 +       if (event->event_mask & POINTER_EVENT_BUTTON) {
 +               char *state = event->state == WL_POINTER_BUTTON_STATE_RELEASED ?
 +                       "released" : "pressed";
@@ -420,6 +410,8 @@ listener, too.
                 state->wl_pointer = NULL;
         }
 +
++       bool have_keyboard = capabilities & WL_SEAT_CAPABILITY_KEYBOARD;
++
 +       if (have_keyboard && state->wl_keyboard == NULL) {
 +               state->wl_keyboard = wl_seat_get_keyboard(state->wl_seat);
 +               wl_keyboard_add_listener(state->wl_keyboard,
@@ -501,7 +493,7 @@ this function, in case the compositor changes the keymap at runtime.[^1]
 +}
 ```
 
-When the keyboard "enters" our surrface, we have received keyboard focus. The
+When the keyboard "enters" our surface, we have received keyboard focus. The
 compositor forwards a list of keys which were already pressed at that time, and
 here we just enumerate them and log their keysym names and UTF-8 equivalent.
 We'll do something similar when keys are pressed:
@@ -538,6 +530,7 @@ And finally, we add small implementations of the three remaining events:
 +
 +static void
 +wl_keyboard_modifiers(void *data, struct wl_keyboard *wl_keyboard,
++               uint32_t serial, uint32_t mods_depressed,
 +               uint32_t mods_latched, uint32_t mods_locked,
 +               uint32_t group)
 +{
@@ -623,7 +616,9 @@ support is available.
                 wl_keyboard_release(state->wl_keyboard);
                 state->wl_keyboard = NULL;
         }
-
++
++       bool have_touch = capabilities & WL_SEAT_CAPABILITY_TOUCH;
++
 +       if (have_touch && state->wl_touch == NULL) {
 +               state->wl_touch = wl_seat_get_touch(state->wl_seat);
 +               wl_touch_add_listener(state->wl_touch,
