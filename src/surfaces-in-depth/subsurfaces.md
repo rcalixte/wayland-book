@@ -1,10 +1,9 @@
 # Subsurfaces
 
 There's only one[^1] surface role defined in the core Wayland protocol,
-`wayland.xml`: subsurfaces. Subsurfaces are surfaces shown on top of their
-parent surface. They have a position relative to the parent surface - which
-needn't be constrained by the bounds of their parent surface - and a z-order
-relative to each other.
+`wayland.xml`: subsurfaces. They have an X, Y position relative to the parent
+surface - which needn't be constrained by the bounds of their parent surface -
+and a Z-order relative to their siblings and parent surface.
 
 Some use-cases for this feature include playing a video surface in its native
 pixel format with an RGBA user-interface or subtitles shown on top, using an
@@ -50,8 +49,10 @@ Manipulating these children is done through the `wl_subsurface` interface:
 <request name="set_desync" />
 ```
 
-The position and z-order requests here are fairly self-explanatory. However,
-the synchronization of the various properties of a `wl_subsurface` requires some
+A subsurface's z-order may be changed by placing it above or below any sibling
+surface that shares the same parent, or the parent surface itself.
+
+The synchronization of the various properties of a `wl_subsurface` requires some
 explanation. These position and z-order properties are synchronized with the
 parent surface's lifecycle. When a `wl_surface.commit` request is sent for the
 main surface, all of its subsurfaces have changes to their position and z-order
