@@ -105,7 +105,7 @@ main(int argc, char *argv[])
 Let's compile and run this, too:
 
 ```sh
-$ cc -o server -lwayland-server server.c
+$ cc -o server server.c -lwayland-server
 $ ./server &
 Running Wayland display on wayland-1
 $ WAYLAND_DISPLAY=wayland-1 ./client
