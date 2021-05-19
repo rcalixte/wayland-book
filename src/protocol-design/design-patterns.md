@@ -26,8 +26,8 @@ these are applied to a *pending* state. Only when the **commit** request is sent
 does the pending state get merged into the *current* state, allowing you to
 atomically update all of these properties within a single frame. Combined with a
 few other key design decisions, this allows Wayland compositors to render
-everything perfectly in every frame - no tearing or partially updated windows,
-just every pixel in its place and every place in its pixel.
+everything perfectly in every frame &mdash; no tearing or partially updated 
+windows, just every pixel in its place and every place in its pixel.
 
 ## Resource lifetimes
 
@@ -36,8 +36,8 @@ client is sending events or requests that pertain to an invalid object. For this
 reason, interfaces which define resources that have finite lifetimes will often
 include requests and events through which the client or server can state their
 intention to no longer send requests or events for that object. Only once both
-sides have agreed to this - asynchronously - do they destroy the resources they
-allocated for that object.
+sides have agreed to this &mdash; asynchronously &mdash; do they destroy the 
+resources they allocated for that object.
 
 Wayland is a fully asynchronous protocol. Messages are guaranteed to arrive in
 the order they were sent, but only with respect to one sender. For example, the

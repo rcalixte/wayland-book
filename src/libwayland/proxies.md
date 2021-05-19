@@ -9,9 +9,9 @@ format. If you review the `wayland-client-core.h` file, you'll find a few
 low-level functions for this purpose. Generally, you don't use these directly.
 
 On the server, objects are abstracted through `wl_resource`, which is fairly
-similar, but have an extra degree of complexity - the server has to track which
-object belongs to which client. Each `wl_resource` is owned by a single client.
-Aside from this, the interface is much the same, and provides low-level
+similar, but have an extra degree of complexity &mdash; the server has to track
+which object belongs to which client. Each `wl_resource` is owned by a single 
+client. Aside from this, the interface is much the same, and provides low-level
 abstraction for marshalling events to send to the associated client. You will
 use `wl_resource` directly on a server more often than you'll use directly
 interface with `wl_proxy` on a client. One example of such a use is to obtain a

@@ -2,7 +2,7 @@
 
 Surfaces in the domain of xdg-shell are referred to as `xdg_surfaces`, and this
 interface brings with it a small amount of functionality common to both kinds of
-XDG surfaces - toplevels and popups. The semantics for each kind of XDG
+XDG surfaces &mdash; toplevels and popups. The semantics for each kind of XDG
 surface are different enough still that they must be specified explicitly
 through an additional role.
 

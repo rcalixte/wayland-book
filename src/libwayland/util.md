@@ -14,5 +14,5 @@ handful of primitives for use in Wayland applications. Among these are:
 - Debug logging facilities to bubble up information from libwayland internals
 
 The header contains many comments which document itself. The documentation is
-quite good - you should read through the header yourself. We'll go into detail
-on how to apply these primitives in the next several pages.
+quite good &mdash; you should read through the header yourself. We'll go into 
+detail on how to apply these primitives in the next several pages.

@@ -37,9 +37,9 @@ Should you need to change the size of the `wl_egl_window` later, use
 
 Some Wayland programmers who don't use libwayland complain that this approach
 ties Mesa and libwayland tightly together, which is true. However, untangling
-them is not impossible - it just requires a lot of work for you in the form of
-implementing `linux-dmabuf` yourself. Consult the Wayland extension XML for
-details on the protocol, and Mesa's implementation at
+them is not impossible &mdash; it just requires a lot of work for you in the 
+form of implementing `linux-dmabuf` yourself. Consult the Wayland extension XML
+for details on the protocol, and Mesa's implementation at
 `src/egl/drivers/dri2/platform_wayland.c` (at the time of writing). Good luck
 and godspeed.
 

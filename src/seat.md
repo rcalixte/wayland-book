@@ -51,9 +51,9 @@ the `wl_seat` global, you get access to the following interface:
 </interface>
 ```
 
-**Note**: This interface has been updated many times - take note of the version
-when you bind to the global. This book assumes you're binding to the latest
-version, which is version 7 at the time of writing.
+**Note**: This interface has been updated many times &mdash; take note of the 
+version when you bind to the global. This book assumes you're binding to the 
+latest version, which is version 7 at the time of writing.
 
 This interface is relatively straightforward. The server will send the client a
 `capabilities` event to signal what kinds of input devices are supported by this

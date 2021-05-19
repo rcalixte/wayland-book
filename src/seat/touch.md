@@ -53,10 +53,10 @@ from the device.
 ```
 
 The "x" and "y" coordinates are fixed-point coordinates in the coordinate space
-of the surface which was touched - which is given in the "surface" argument.
-The time is a monotonically increasing timestamp with an arbitrary epoch, in
-milliseconds.[^2] Note also the inclusion of a serial, which can be included in
-future requests to associate them with this input event.
+of the surface which was touched &mdash; which is given in the "surface" 
+argument. The time is a monotonically increasing timestamp with an arbitrary 
+epoch, in milliseconds.[^2] Note also the inclusion of a serial, which can be 
+included in future requests to associate them with this input event.
 
 ## Motion
 

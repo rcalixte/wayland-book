@@ -8,8 +8,8 @@ anywhere on the screen, and used this to facilitate these interactions.
 
 However, a deliberate design trait of Wayland makes application windows ignorant
 of their exact placement on screen or relative to other windows. This decision
-affords Wayland compositors a greater deal of flexibility - windows could be
-shown in several places at once, arranged in the 3D space of a VR scene, or
+affords Wayland compositors a greater deal of flexibility &mdash; windows could 
+be shown in several places at once, arranged in the 3D space of a VR scene, or
 presented in any other novel way. Wayland is designed to be generic and widely
 applicable to many devices and form factors.
 

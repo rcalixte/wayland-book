@@ -10,7 +10,7 @@ server emits the `global` event several times to advertise which interfaces it
 supports. Each of these globals is assigned a unique `name`, as an unsigned
 integer. The `interface` string maps to the name of the interface found in the
 protocol: `wl_display` from the XML above is an example of such a name. The
-version number is also defined here - for more information about interface
+version number is also defined here &mdash; for more information about interface
 versioning, see appendix C.
 
 To bind to any of these interfaces, we use the bind request, which works
@@ -30,16 +30,16 @@ C->S    00000002 00100000 00000001 00000003   .... .... .... ....
 The first message is identical to the one we've already dissected. The second
 one is an event from the server: object 2 (which the client assigned the
 `wl_registry` to in the first message) opcode 0 ("global"), with arguments 1,
-"wl_shm", and 1 - respectively the name, interface, and version of this global.
-The client responds by calling opcode 0 on object ID 2 (`wl_registry::bind`) and
-assigns object ID `3` to global name `1` - *binding* to the `wl_shm` global.
-Future events and requests for this object are defined by the `wl_shm` protocol,
-which you can find in `wayland.xml`.
+"wl_shm", and 1 &mdash; respectively the name, interface, and version of this 
+global. The client responds by calling opcode 0 on object ID 2 
+(`wl_registry::bind`) and assigns object ID `3` to global name `1` &mdash; 
+*binding* to the `wl_shm` global. Future events and requests for this object
+are defined by the `wl_shm` protocol, which you can find in `wayland.xml`.
 
 Once you've created this object, you can utilize its interface to accomplish
-various tasks - in the case of `wl_shm`, managing shared memory between the
-client and server. Most of the remainder of this book is devoted to explaining
-the usage of each of these globals.
+various tasks &mdash; in the case of `wl_shm`, managing shared memory between 
+the client and server. Most of the remainder of this book is devoted to 
+explaining the usage of each of these globals.
 
 Armed with this information, we can write our first useful Wayland client: one
 which simply prints all of the globals available on the server.

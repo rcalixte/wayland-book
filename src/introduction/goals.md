@@ -9,13 +9,13 @@ frame its presentation of Wayland. However, it should provide some utility for
 those working on Wayland compositors as well.
 
 The free desktop ecosystem is complex and built from many discrete parts. We are
-going to discuss these pieces very little - you won't find information here
-about leveraging libdrm in your Wayland compositor, or using libinput to process
-evdev events. Thus, this book is not a comprehensive guide for building Wayland
-compositors. We're also not going to talk about drawing technologies which are
-useful for Wayland clients, such as Cairo, Pango, GTK+, and so on, and thus
-neither is this a robust guide for the practical Wayland client implementation.
-Instead, we focus only on the particulars of Wayland.
+going to discuss these pieces very little &mdash; you won't find information 
+here about leveraging libdrm in your Wayland compositor, or using libinput to 
+process evdev events. Thus, this book is not a comprehensive guide for building 
+Wayland compositors. We're also not going to talk about drawing technologies 
+which are useful for Wayland clients, such as Cairo, Pango, GTK+, and so on, and 
+thus neither is this a robust guide for the practical Wayland client 
+implementation. Instead, we focus only on the particulars of Wayland.
 
 This book only covers the protocol and libwayland. If you are writing a client
 and are already familiar with your favorite user interface rendering library,

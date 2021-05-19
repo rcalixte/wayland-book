@@ -5,16 +5,16 @@ object ID, but thus far we haven't discussed how objects are created. When we
 receive a Wayland message, we must know what interface the object ID represents
 to decode it. We must also somehow negotiate available objects, the creation of
 new ones, and the assigning of IDs to them, in some manner. On Wayland we solve
-both of these problems at once - when we *bind* an object ID, we agree on the
-interface used for it in all future messages, and stash a mapping of object IDs
-to interfaces in our local state.
+both of these problems at once &mdash; when we *bind* an object ID, we agree on 
+the interface used for it in all future messages, and stash a mapping of object 
+IDs to interfaces in our local state.
 
 In order to bootstrap these, the server offers a list of *global* objects. These
 globals often provide information and functionality on their own merits, but
 most often they're used to broker additional objects to fulfill various
-purposes - such as the creation of application windows. These globals themselves
-also have their own object IDs and interfaces, which we have to assign and agree
-upon somehow.
+purposes &mdash; such as the creation of application windows. These globals 
+themselves also have their own object IDs and interfaces, which we have to 
+assign and agree upon somehow.
 
 With questions of hens and eggs no doubt coming to mind by now, I'll reveal the
 secret trick: object ID 1 is already implicitly assigned to the `wl_display`

@@ -80,8 +80,8 @@ input region in that shape. For most surface types by default, your entire
 surface accepts input.
 
 Both of these requests can be used to set an empty region by passing in null
-instead of a `wl_region` object. They're also both double-buffered - so send a
-`wl_surface.commit` to make your changes effective. You can destroy the
+instead of a `wl_region` object. They're also both double-buffered &mdash; so 
+send a `wl_surface.commit` to make your changes effective. You can destroy the
 `wl_region` object to free up its resources as soon as you've sent the
 `set_opaque_region` or `set_input_region` requests with it. Updating the region
 after you send these requests will not update the state of the surface.

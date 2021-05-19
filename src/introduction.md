@@ -24,7 +24,6 @@ be updated later. Chapters 11 forward in large part remain to be written.
 - Move linux-dmabuf details to the appendix, add note about wl_drm & Mesa
 - Rewrite the introduction text
 - Add example code for interactive move, to demonstrate the use of serials
-- Use &mdash; instead of - where appropriate
 - Prepare PDFs and EPUBs
 
 ## About the book

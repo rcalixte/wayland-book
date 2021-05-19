@@ -27,7 +27,7 @@ for `wl_surface`. Here's a sample:
 
 **Note**: I've trimmed this snippet for brevity, but if you have the
 `wayland.xml` file in front of you, seek out this interface and examine it
-yourself - included is additional documentation explaining the purpose and
+yourself &mdash; included is additional documentation explaining the purpose and
 precise semantics of each request and event.
 
 When processing this XML file, we assign each request and event an opcode in the
@@ -35,8 +35,8 @@ order that they appear (both numbered from zero and incrementing independently).
 Combined with the list of arguments, you can decode the request or event when it
 comes in over the wire, and based on the documentation shipped in the XML file
 you can decide how to program your software to behave accordingly.  This usually
-comes in the form of code generation - we'll talk about how libwayland does this
-in chapter 3.
+comes in the form of code generation &mdash; we'll talk about how libwayland 
+does this in chapter 3.
 
 Starting from chapter 4, most of the remainder of this book is devoted to
 explaining this file, as well as some supplementary protocol extensions.

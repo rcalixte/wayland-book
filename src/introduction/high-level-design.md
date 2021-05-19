@@ -15,15 +15,15 @@ laptop or mobile device. These resources are shared between all of your
 applications, and the role of the **Wayland compositor** is to dispatch input
 events to the appropriate **Wayland client** and to display their windows in
 their appropriate place on your outputs. The process of bringing together all of
-your application windows for display on an output is called *compositing* - and
-thus we call the software which does this the *compositor*.
+your application windows for display on an output is called *compositing* 
+&mdash; and thus we call the software which does this the *compositor*.
 
 ## In practice
 
 There are many distinct software components in desktop ecosystem. There are
 tools like Mesa for rendering (and each of its drivers), the Linux KMS/DRM
 subsystem, buffer allocation with GBM, the userspace libdrm library, libinput
-and evdev, and much more still. Don't worry - expertise with most of these
+and evdev, and much more still. Don't worry &mdash; expertise with most of these
 systems is not required for understanding Wayland, and in any case are largely
 beyond the scope of this book. In fact, the Wayland protocol is quite
 conservative and abstract, and a Wayland-based desktop could easily be built &
@@ -52,20 +52,20 @@ once avoid lawsuits and frustrate you with cold coffee.
 
 At this level, your hardware has little concept of what applications are running
 on your system. The hardware provides an interface with which it can be
-commanded to perform work, and does what it's told - regardless of who tells it
-so. For this reason, only one component is allowed to talk to it...
+commanded to perform work, and does what it's told &mdash; regardless of who 
+tells it so. For this reason, only one component is allowed to talk to it...
 
 ## The kernel
 
 This responsibility falls onto the kernel. The kernel is a complex beast, so
 we'll focus on only the parts which are relevant to Wayland. Linux's job is to
 provide an abstraction over your hardware, so that they can be safely accessed
-by *userspace* - where our Wayland compositors run. For graphics, this is called
-**DRM**, or *direct rendering manager*, for efficiently tasking the GPU with
-work from userspace. An important subsystem of DRM is **KMS**, or *kernel mode
-setting*, for enumerating your displays and setting properties such as their
-selected resolution (also known as their "mode"). Input devices are abstracted
-through an interface called **evdev**.
+by *userspace* &mdash; where our Wayland compositors run. For graphics, this is
+called **DRM**, or *direct rendering manager*, for efficiently tasking the GPU
+with work from userspace. An important subsystem of DRM is **KMS**, or *kernel
+mode setting*, for enumerating your displays and setting properties such as 
+their selected resolution (also known as their "mode"). Input devices are 
+abstracted through an interface called **evdev**.
 
 Most kernel interfaces are made available to userspace by way of special files
 in `/dev`. In the case of DRM, these files are in `/dev/dri/`, usually in the
@@ -91,7 +91,7 @@ not used by Wayland clients directly.
 
 Mesa is one of the most important parts of the Linux graphics stack. It
 provides, among other things, vendor-optimized implementations of OpenGL (and
-Vulkan) for Linux and the **GBM** (Generic Buffer Management) library - an
+Vulkan) for Linux and the **GBM** (Generic Buffer Management) library &mdash; an
 abstraction on top of libdrm for allocating buffers on the GPU. Most Wayland
 compositors will use both GBM and OpenGL via Mesa, and most Wayland clients will
 use at least its OpenGL or Vulkan implementations.
@@ -103,7 +103,7 @@ evdev. It's responsible for receiving input events from the kernel from your
 various input devices, decoding them into a usable form, and passing them on to
 the Wayland compositor. The Wayland compositor requires special permissions to
 use the evdev files, forcing Wayland clients to go through the compositor to
-receive input events - which, for example, prevents keylogging.
+receive input events &mdash; which, for example, prevents keylogging.
 
 ### (e)udev
 
@@ -122,7 +122,7 @@ into an independent library for keyboard handling, and it no longer has any
 practical relationship with X. Libinput (along with the Wayland compositor)
 delivers keyboard events in the form of scancodes, whose precise meaning varies
 from keyboard to keyboard. It's the responsibility of xkbcommon to translate
-these scan codes into meaningful and generic key "symbols" - for example,
+these scan codes into meaningful and generic key "symbols" &mdash; for example,
 converting `65` to `XKB_KEY_Space`. It also contains a state machine which knows
 that pressing "1" while shift is held emits "!".
 
@@ -145,6 +145,6 @@ chapter 1.3, and throughout this book.
 Each of the pieces mentioned so far are consistently found throughout the Linux
 desktop ecosystem. Beyond this, more components exist. Many graphical
 applications don't know about Wayland at all, choosing instead to allow
-libraries like GTK+, Qt, SDL, and GLFW - among many others - to deal with it.
-Many compositors choose software like wlroots to abstract more of their
+libraries like GTK+, Qt, SDL, and GLFW &mdash; among many others &mdash; to deal 
+with it. Many compositors choose software like wlroots to abstract more of their
 responsibilities, while others implement everything in-house.

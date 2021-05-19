@@ -48,8 +48,8 @@ in the example code, but which may be appropriate for your application:
 
 The title is often shown in window decorations, tasksbars, etc, whereas the app
 ID is used to identify your application or group your windows together. You
-might utilize these by setting your window title to "Application windows - The
-Wayland Protocol - Firefox", and your app ID to "firefox".
+might utilize these by setting your window title to "Application windows &mdash; 
+The Wayland Protocol &mdash; Firefox", and your app ID to "firefox".
 
 In summary, the following steps will take you from zero to a window on-screen:
 

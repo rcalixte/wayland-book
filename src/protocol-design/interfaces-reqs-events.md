@@ -20,17 +20,17 @@ surface has changed and needs to be redrawn. Here's an annotated example of a
     00000100    Width        (int): 256
     00000100    Height       (int): 256
 
-This is a snippet of a session - the surface was allocated earlier and assigned
-an ID of 10. When the server receives this message, it looks up the object with
-ID 10 and finds that it's a `wl_surface` instance. Knowing this, it looks up the
-signature for the request with opcode 2. It then knows to expect four integers
-as the arguments, and it can decode the message and dispatch it for processing
-internally.
+This is a snippet of a session &mdash; the surface was allocated earlier and 
+assigned an ID of 10. When the server receives this message, it looks up the 
+object with ID 10 and finds that it's a `wl_surface` instance. Knowing this, 
+it looks up the signature for the request with opcode 2. It then knows to expect 
+four integers as the arguments, and it can decode the message and dispatch it 
+for processing internally.
 
 ## Events
 
 Requests are sent from the client to the server. The server can also send
-messages back - events. One event that the server can send regarding a
+messages back &mdash; events. One event that the server can send regarding a
 `wl_surface` is "enter", which it sends when that surface is being displayed on
 a specific output (the client might respond to this, for example, by adjusting
 its scale factor for a HiDPI display). Here's an example of such a message:
@@ -49,6 +49,6 @@ opcode 0. It decodes the rest of the message accordingly (looking up the
 ## Interfaces
 
 The interfaces which define the list of requests and events, the opcodes
-associated with each, and the signatures with which you can decode the messages -
-are agreed upon in advance. I'm sure you're dying to know how - simply turn the
-page to end the suspense.
+associated with each, and the signatures with which you can decode the messages 
+&mdash; are agreed upon in advance. I'm sure you're dying to know how &mdash; 
+simply turn the page to end the suspense.

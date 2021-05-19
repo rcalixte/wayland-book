@@ -10,8 +10,8 @@ Every surface has a *pending* state and an *applied* state, and no state at all
 when it's first created. The *pending* state is negotiated over the course of
 any number of requests from clients and events from the server, and when both
 sides agree that it represents a consistent surface state, the surface is
-*committed* - and the pending state is *applied* to the current state of the
-surface. Until this time, the compositor will continue to render the last
+*committed* &mdash; and the pending state is *applied* to the current state of 
+the surface. Until this time, the compositor will continue to render the last
 consistent state; once committed, will use the new state from the next frame
 forward.
 

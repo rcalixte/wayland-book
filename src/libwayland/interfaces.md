@@ -1,12 +1,12 @@
 # Interfaces & listeners
 
 Finally, we reach the summit of libwayland's abstractions: interfaces and
-listeners. The ideas discussed in previous chapters - `wl_proxy` and
-`wl_resource`, and the primitives - are singular implementations which live in
-libwayland, and they exist to provide support to this layer. When you run an XML
-file through wayland-scanner, it generates *interfaces* and *listeners*, as well
-as glue code between them and the low-level wire protocol interfaces, all
-specific to each interface in the high-level protocols.
+listeners. The ideas discussed in previous chapters &mdash; `wl_proxy` and
+`wl_resource`, and the primitives &mdash; are singular implementations which 
+live in libwayland, and they exist to provide support to this layer. When you
+run an XML file through wayland-scanner, it generates *interfaces* and
+*listeners*, as well as glue code between them and the low-level wire protocol
+interfaces, all specific to each interface in the high-level protocols.
 
 Recall that each actor on a Wayland connection can both receive and send
 messages. A client is listening for events and sending requests, and a server
@@ -99,11 +99,11 @@ void wl_surface_attach(struct wl_surface *wl_surface,
     struct wl_buffer *buffer, int32_t x, int32_t y);
 ```
 
-The server-side code for interfaces and listeners is identical, but reversed -
-it generates listeners for requests and glue code for events. When libwayland
-receives a message, it looks up the object ID, and its interface, then uses that
-to decode the rest of the message. Then it looks for listeners on this object
-and invokes your functions with the arguments to the message.
+The server-side code for interfaces and listeners is identical, but reversed 
+&mdash; it generates listeners for requests and glue code for events. When 
+libwayland receives a message, it looks up the object ID, and its interface, 
+then uses that to decode the rest of the message. Then it looks for listeners on
+this object and invokes your functions with the arguments to the message.
 
 That's all there is to it! It took us a couple of layers of abstraction to get
 here, but you should now understand how an event starts in your server code,

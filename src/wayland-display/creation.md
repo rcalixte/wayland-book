@@ -1,6 +1,6 @@
 # Creating a display
 
-Fire up your text editor - it's time to write our first lines of code.
+Fire up your text editor &mdash; it's time to write our first lines of code.
 
 ## For Wayland clients
 
@@ -44,8 +44,9 @@ struct wl_display *wl_display_connect(const char *name);
 
 The "name" argument is the name of the Wayland display, which is typically
 `"wayland-0"`. You can swap the `NULL` for this in our test client and try for
-yourself - it's likely to work. This corresponds to the name of a Unix socket in
-`$XDG_RUNTIME_DIR`. `NULL` is preferred, however, in which case libwayland will:
+yourself &mdash; it's likely to work. This corresponds to the name of a Unix 
+socket in `$XDG_RUNTIME_DIR`. `NULL` is preferred, however, in which case 
+libwayland will:
 
 1. If `$WAYLAND_DISPLAY` is set, attempt to connect to
    `$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY`

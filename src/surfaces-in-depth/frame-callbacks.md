@@ -11,8 +11,8 @@ rendering frames of a video game, playing back a video, or rendering an
 animation. Your display has an inherent *refresh rate*, or the fastest rate at
 which it's able to display updates (generally this is a number like 60 Hz, 144
 Hz, etc). It doesn't make sense to render frames any faster than this, and doing
-so would be a waste of resources - CPU, GPU, even the user's battery. If you
-send several frames between each display refresh, all but the last will be
+so would be a waste of resources &mdash; CPU, GPU, even the user's battery. If 
+you send several frames between each display refresh, all but the last will be
 discarded and have been rendered for naught.
 
 Additionally, the compositor might not even want to show new frames for you.

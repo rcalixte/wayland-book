@@ -1,11 +1,11 @@
 # Shared memory buffers
 
 The simplest means of getting pixels from client to compositor, and the only one
-enshrined in `wayland.xml`, is `wl_shm` - shared memory. Simply put, it allows
-you to transfer a file descriptor for the compositor to mmap with `MAP_SHARED`,
-then share pixel buffers out of this pool. Add some simple synchronization
-primitives to keep everyone from fighting over each buffer, and you have a
-workable - and portable - solution.
+enshrined in `wayland.xml`, is `wl_shm` &mdash; shared memory. Simply put, it 
+allows you to transfer a file descriptor for the compositor to mmap with 
+`MAP_SHARED`, then share pixel buffers out of this pool. Add some simple 
+synchronization primitives to keep everyone from fighting over each buffer, and 
+you have a workable &mdash; and portable &mdash; solution.
 
 ## Binding to wl_shm
 
@@ -180,7 +180,8 @@ wl_surface_commit(surface);
 
 If you were to apply all of this newfound knowledge to writing a Wayland client
 yourself, you may arrive at this point confused when your buffer is not shown
-on-screen. We're missing a critical final step - assigning your surface a role.
+on-screen. We're missing a critical final step &mdash; assigning your surface a
+role.
 
 [^1]: "Damaged" meaning "this area needs to be redrawn"
 

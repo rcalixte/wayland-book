@@ -2,8 +2,8 @@
 
 There's only one[^1] surface role defined in the core Wayland protocol,
 `wayland.xml`: subsurfaces. They have an X, Y position relative to the parent
-surface - which needn't be constrained by the bounds of their parent surface -
-and a Z-order relative to their siblings and parent surface.
+surface &mdash; which needn't be constrained by the bounds of their parent 
+surface &mdash; and a Z-order relative to their siblings and parent surface.
 
 Some use-cases for this feature include playing a video surface in its native
 pixel format with an RGBA user-interface or subtitles shown on top, using an
@@ -12,7 +12,7 @@ render window decorations in software, or moving around parts of the UI without
 having to redraw on the client. With the assistance of hardware planes, the
 compositor, too, might not even have to redraw anything for updates your
 subsurfaces. On embedded systems in particular, this can be especially useful
-when it fits your use-case.  A cleverly designed application can take advantage
+when it fits your use-case. A cleverly designed application can take advantage
 of subsurfaces to be very efficient.
 
 The interface for managing these is the `wl_subcompositor` interface. The
@@ -67,8 +67,8 @@ manage their own commit lifecycle like any other.
 
 In short, the sync and desync requests are non-buffered and apply immediately.
 The position and z-order requests are buffered, and are not affected by the
-sync/desync property of the surface - they are always committed with the parent
-surface. The remaining surface state, on the associated `wl_surface`, is
+sync/desync property of the surface &mdash; they are always committed with the 
+parent surface. The remaining surface state, on the associated `wl_surface`, is
 committed in accordance with the sync/desync status of the subsurface.
 
 [^1]: Disregarding the deprecated `wl_shell` interface.
