@@ -8,7 +8,7 @@ the point. Now, we'll explore this complex interface in depth.
 When you open a pop-up window, it's shown in a windowing system which has
 constraints that your client is not privy to. For example, Wayland clients are
 unaware of where their windows are being shown on-screen. Therefore, if you
-right click a window, the client does not poses the necessary information to
+right click a window, the client does not possess the necessary information to
 determine that the resulting pop-up might end up running itself off the edge of
 the screen. The positioner is designed to address these issues, by letting the
 client specify certain constraints in how the pop-up can be moved or resized,

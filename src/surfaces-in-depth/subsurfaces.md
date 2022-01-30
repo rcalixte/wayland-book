@@ -10,7 +10,7 @@ pixel format with an RGBA user-interface or subtitles shown on top, using an
 OpenGL surface for your primary application interface and using subsurfaces to
 render window decorations in software, or moving around parts of the UI without
 having to redraw on the client. With the assistance of hardware planes, the
-compositor, too, might not even have to redraw anything for updates your
+compositor, too, might not even have to redraw anything for updating your
 subsurfaces. On embedded systems in particular, this can be especially useful
 when it fits your use-case. A cleverly designed application can take advantage
 of subsurfaces to be very efficient.

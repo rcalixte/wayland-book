@@ -24,7 +24,7 @@ request is used instead.
 The first and second arguments are reasonably self-explanatory, but the third
 one introduces a new concept: positioners. The purpose of the positioner is, as
 the name might suggest, to *position* the new popup. This is used to allow the
-compositor to participate in the positioning of popups using its priveleged
+compositor to participate in the positioning of popups using its privileged
 information, for example to avoid having the popup extend past the edge of the
 display. We'll discuss positioners in chapter 10.4, for now you can simply create
 one and pass it in without further configuration to achieve reasonably sane
@@ -72,7 +72,7 @@ in chapter 10.4.
 ## Popup grabs
 
 Popup surfaces will often want to "grab" all input, for example to allow the
-user to use the arrow keys to select different menu items. This is facilitiated
+user to use the arrow keys to select different menu items. This is facilitated
 through the grab request:
 
 ```xml

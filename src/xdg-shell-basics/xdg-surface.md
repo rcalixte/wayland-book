@@ -21,7 +21,7 @@ a `wl_surface`.
 The `xdg_surface` interface, in addition to requests for assigning a more
 specific role of toplevel or popup to your surface, also includes some important
 functionality common to both roles. Let's review these before we move on to the
-toplevel- and popup-specific semantics.
+toplevel and popup-specific semantics.
 
 ```xml
 <event name="configure">

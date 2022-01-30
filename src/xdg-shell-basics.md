@@ -19,7 +19,7 @@ on your system.
 
 `xdg_wm_base` is the only global defined by the specification, and it provides
 requests for creating each of the other objects you need. The most basic
-implementation starts by handling the "ping" event - when the compositor sends
+implementation starts by handling the "ping" event &mdash; when the compositor sends
 it, you should respond with a "pong" request in a timely manner to hint that you
 haven't become deadlocked. Another request deals with the creation of
 positioners, the objects mentioned earlier, and we'll save the details on these

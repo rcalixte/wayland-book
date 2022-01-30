@@ -46,7 +46,7 @@ in the example code, but which may be appropriate for your application:
 </request>
 ```
 
-The title is often shown in window decorations, tasksbars, etc, whereas the app
+The title is often shown in window decorations, taskbars, etc, whereas the app
 ID is used to identify your application or group your windows together. You
 might utilize these by setting your window title to "Application windows &mdash; 
 The Wayland Protocol &mdash; Firefox", and your app ID to "firefox".

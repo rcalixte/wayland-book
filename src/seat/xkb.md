@@ -34,7 +34,7 @@ grab the header, `xkbcommon/xkbcommon.h`.[^1] Most programs which utilize
 xkbcommon will have to manage three objects:
 
 - xkb_context: a handle used for configuring other XKB resources
-- xkb_keymap: a mapping from scancodes to key symbls
+- xkb_keymap: a mapping from scancodes to key symbols
 - xkb_state: a state machine that turns key symbols into UTF-8 strings
 
 The process for setting this up usually goes as follows:

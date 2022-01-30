@@ -144,7 +144,7 @@ object for seats which are capable of pointer input.
 ```
 
 This merits some explanation. Recall that `capabilities` is a bitmask of the
-kinds of devices supported by this seat - a bitwise AND (&) with a capability
+kinds of devices supported by this seat &mdash; a bitwise AND (&) with a capability
 will produce a non-zero value if supported. Then, if we have a pointer and have
 *not* already configured it, we take the first branch, using
 `wl_seat_get_pointer` to obtain a pointer reference and storing it in our state.
@@ -561,7 +561,7 @@ and see your input printed into the log. Huzzah!
 
 Finally, we'll add support for touch-capable devices. Like pointers, a "frame"
 event exists for touch devices. However, they're further complicated by the
-possibility that mulitple touch points may be updated within a single frame.
+possibility that multiple touch points may be updated within a single frame.
 We'll add some more structures and enums to represent the accumulated state:
 
 ```diff
@@ -591,7 +591,7 @@ We'll add some more structures and enums to represent the accumulated state:
 +};
 ```
 
-Note that I've arbitrarily choosen 10 touchpoints here, with the assumption that
+Note that I've arbitrarily chosen 10 touchpoints here, with the assumption that
 most users will only ever use that many fingers. For larger, multi-user touch
 screens, you may need a higher limit. Additionally, some touch hardware supports
 fewer than 10 touch points concurrently &mdash; 8 is also common, and hardware

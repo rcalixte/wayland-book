@@ -129,4 +129,4 @@ this knowledge in hand, let's update our example code.
 
 [^1]: Emphasis on "might" &mdash; don't make any assumptions based on the repeated use of a touch point ID.
 
-[^2]: This means that separate timestamps can be compared to each other to obtain the time between events, but are not comparible to wall-clock time.
+[^2]: This means that separate timestamps can be compared to each other to obtain the time between events, but are not comparable to wall-clock time.
