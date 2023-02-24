@@ -68,7 +68,7 @@ static const struct wl_surface_listener surface_listener = {
     .leave = wl_surface_leave,
 };
 
-// ...cotd...
+// ...
 
 struct wl_surface *surf;
 wl_surface_add_listener(surf, &surface_listener, NULL);

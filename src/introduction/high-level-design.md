@@ -59,12 +59,12 @@ tells it so. For this reason, only one component is allowed to talk to it...
 
 This responsibility falls onto the kernel. The kernel is a complex beast, so
 we'll focus on only the parts which are relevant to Wayland. Linux's job is to
-provide an abstraction over your hardware, so that they can be safely accessed
+provide an abstraction over your hardware, so that it can be safely accessed
 by *userspace* &mdash; where our Wayland compositors run. For graphics, this is
-called **DRM**, or *direct rendering manager*, for efficiently tasking the GPU
-with work from userspace. An important subsystem of DRM is **KMS**, or *kernel
-mode setting*, for enumerating your displays and setting properties such as 
-their selected resolution (also known as their "mode"). Input devices are 
+called the **DRM**, or *direct rendering manager*, which efficiently tasks the
+GPU with work from userspace. An important subsystem of DRM is **KMS**, or
+*kernel mode setting*, for enumerating your displays and setting properties such
+as their selected resolution (also known as their "mode"). Input devices are
 abstracted through an interface called **evdev**.
 
 Most kernel interfaces are made available to userspace by way of special files

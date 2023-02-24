@@ -4,7 +4,7 @@ If you'll recall from chapter 2.1, each request and event is associated with an
 object ID, but thus far we haven't discussed how objects are created. When we
 receive a Wayland message, we must know what interface the object ID represents
 to decode it. We must also somehow negotiate available objects, the creation of
-new ones, and the assigning of IDs to them, in some manner. On Wayland we solve
+new ones, and the assigning of IDs to them, in some manner. In Wayland we solve
 both of these problems at once &mdash; when we *bind* an object ID, we agree on 
 the interface used for it in all future messages, and stash a mapping of object 
 IDs to interfaces in our local state.
@@ -12,14 +12,14 @@ IDs to interfaces in our local state.
 In order to bootstrap these, the server offers a list of *global* objects. These
 globals often provide information and functionality on their own merits, but
 most often they're used to broker additional objects to fulfill various
-purposes &mdash; such as the creation of application windows. These globals 
-themselves also have their own object IDs and interfaces, which we have to 
-assign and agree upon somehow.
+purposes, such as the creation of application windows. These globals themselves
+also have their own object IDs and interfaces, which we have to somehow assign
+and agree upon.
 
-With questions of hens and eggs no doubt coming to mind by now, I'll reveal the
-secret trick: object ID 1 is already implicitly assigned to the `wl_display`
-interface when you make the connection. As you'll recall the interface, take
-note of the `wl_display::get_registry` request:
+With questions of chickens and eggs no doubt coming to mind by now, I'll reveal
+the secret trick: object ID 1 is already implicitly assigned to the `wl_display`
+interface when you make the connection. As you recall the interface, take note
+of the `wl_display::get_registry` request:
 
 ```xml
 <interface name="wl_display" version="1">
@@ -31,7 +31,7 @@ note of the `wl_display::get_registry` request:
     <arg name="registry" type="new_id" interface="wl_registry" />
   </request>
 
-  <!-- cotd -->
+  <!-- ... -->
 </interface>
 ```
 

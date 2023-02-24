@@ -4,14 +4,13 @@ Upon creating a registry object, the server will emit the `global` event for
 each global available on the server. You can then bind to the globals you
 require.
 
-This process of taking a known object and assigning it an ID is called
-*binding* the object. Once the client binds to the registry like this, the
-server emits the `global` event several times to advertise which interfaces it
-supports. Each of these globals is assigned a unique `name`, as an unsigned
-integer. The `interface` string maps to the name of the interface found in the
-protocol: `wl_display` from the XML above is an example of such a name. The
-version number is also defined here &mdash; for more information about interface
-versioning, see appendix C.
+*Binding* is the process of taking a known object and assigning it an ID. Once
+the client binds to the registry like this, the server emits the `global` event
+several times to advertise which interfaces it supports. Each of these globals
+is assigned a unique `name`, as an unsigned integer. The `interface` string maps
+to the name of the interface found in the protocol: `wl_display` from the XML
+above is an example of such a name. The version number is also defined here
+&mdash; for more information about interface versioning, see appendix C.
 
 To bind to any of these interfaces, we use the bind request, which works
 similarly to the magical process by which we bound to the `wl_registry`. For

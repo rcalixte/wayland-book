@@ -13,6 +13,6 @@ handful of primitives for use in Wayland applications. Among these are:
   numbers) and C types
 - Debug logging facilities to bubble up information from libwayland internals
 
-The header contains many comments which document itself. The documentation is
-quite good &mdash; you should read through the header yourself. We'll go into 
-detail on how to apply these primitives in the next several pages.
+The header itself contains many comments with quite good documentation &mdash;
+you should read through them yourself. We'll go into detail on how to apply
+these primitives in the next several pages.

@@ -1,6 +1,6 @@
 # Proxies & resources
 
-An *object* is an entity which known to both the client and server that has some
+An *object* is an entity known to both the client and server that has some
 state, changes to which are negotiated over the wire. On the client side,
 libwayland refers to these objects through the `wl_proxy` interface. These are a
 concrete C-friendly "proxy" for the abstract object, and provides functions
@@ -20,4 +20,5 @@ out-of-context, or send a protocol error when the client attempts an invalid
 operation.
 
 Another level up is another set of higher-level interfaces, which most Wayland
-client & server code interacts with to accomplish a majority of their tasks.
+clients & servers interact with to accomplish a majority of their tasks. We will
+look at them in the next section.

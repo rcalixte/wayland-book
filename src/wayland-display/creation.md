@@ -50,11 +50,11 @@ libwayland will:
 
 1. If `$WAYLAND_DISPLAY` is set, attempt to connect to
    `$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY`
-2. Attempt to connect to `$XDG_RUNTIME_DIR/wayland-0`
-3. Fail :(
+2. Otherwise, attempt to connect to `$XDG_RUNTIME_DIR/wayland-0`
+3. Otherwise, fail :(
 
 This allows users to specify the Wayland display they want to run their clients
-on by setting the `$WAYLAND_DISPLAY` to the desired display. If you have more
+on by setting `$WAYLAND_DISPLAY` to the desired display. If you have more
 complex requirements, you can also establish the connection yourself and create
 a Wayland display from a file descriptor:
 
@@ -115,7 +115,7 @@ Connection established!
 
 Using `wl_display_add_socket_auto` will allow libwayland to decide the name for
 the display automatically, which defaults to `wayland-0`, or `wayland-$n`,
-depending on if any other Wayland compositors have sockets in
+depending on whether any other Wayland compositors have sockets in
 `$XDG_RUNTIME_DIR`. However, as with the client, you have some other options for
 configuring the display:
 

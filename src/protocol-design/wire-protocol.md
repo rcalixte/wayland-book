@@ -57,9 +57,9 @@ assuming you've already negotiated an object ID. Speaking of which...
 
 ## Object IDs
 
-When a message comes in with a `new_id` argument, the sender allocates an
-object ID for it (the interface used for this object is established through
-additional arguments, or agreed upon in advance for that request/event). This
+When a message comes in with a `new_id` argument, the sender allocates an object
+ID for it &mdash; the interface used for this object is established through
+additional arguments, or agreed upon in advance for that request/event. This
 object ID can be used in future messages, either as the first word of the
 header, or as an `object_id` argument. The client allocates IDs in the range of
 `[1, 0xFEFFFFFF]`, and the server allocates IDs in the range of `[0xFF000000,

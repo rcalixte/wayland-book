@@ -2,8 +2,8 @@
 
 libwayland provides its own event loop implementation for Wayland servers to
 take advantage of, but the maintainers have acknowledged this as a design
-overstep. For clients, there is no such equivalent. However, the Wayland server
-event loop is useful enough, even if it's out-of-scope.
+overstep. For clients, there is no such equivalent. Regardless, the Wayland
+server event loop is useful enough, even if it's out-of-scope.
 
 ## Wayland server event loop
 

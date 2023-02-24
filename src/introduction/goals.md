@@ -14,7 +14,7 @@ here about leveraging libdrm in your Wayland compositor, or using libinput to
 process evdev events. Thus, this book is not a comprehensive guide for building 
 Wayland compositors. We're also not going to talk about drawing technologies 
 which are useful for Wayland clients, such as Cairo, Pango, GTK+, and so on, and 
-thus neither is this a robust guide for the practical Wayland client 
+thus nor is this a robust guide for the practical Wayland client 
 implementation. Instead, we focus only on the particulars of Wayland.
 
 This book only covers the protocol and libwayland. If you are writing a client
