@@ -1,4 +1,4 @@
-# Application windows
+## Application windows
 
 We have shaved many yaks to get here, but it's time: XDG toplevel is the
 interface which we will finally use to display an application window. The XDG

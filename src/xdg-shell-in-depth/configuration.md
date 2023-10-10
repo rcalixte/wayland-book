@@ -1,4 +1,4 @@
-# Configuration & lifecycle
+## Configuration & lifecycle
 
 Previously, we created a window at a fixed size of our choosing: 640x480.
 However, the compositor will often have an opinion about what size our window
@@ -34,7 +34,7 @@ assumed a state consistent with these suggestions, it sends an `ack_configure`
 request with the same serial to indicate this. Upon the next commit to the
 associated `wl_surface`, the compositor will consider the state consistent.
 
-## XDG top-level lifecycle
+### XDG top-level lifecycle
 
 Our example code from chapter 7 works, but it's not the best citizen of the
 desktop right now. It does not assume the compositor's recommended size, and if
@@ -162,7 +162,7 @@ diff --git a/client.c b/client.c
 If you compile and run this client again, you'll notice that it's a lot more
 well-behaved than before.
 
-## Requesting state changes
+### Requesting state changes
 
 The client can also request that the compositor put the client into one of these
 states, or place constraints on the size of the window.

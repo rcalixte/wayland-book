@@ -26,7 +26,7 @@ be updated later. Chapters 11 forward in large part remain to be written.
 - Add example code for interactive move, to demonstrate the use of serials
 - Prepare PDFs and EPUBs
 
-## About the book
+### About the book
 
 This work is licensed under a <a rel="license"
 href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons
@@ -37,7 +37,7 @@ Attribution-ShareAlike 4.0 International License</a>. The source code is
 
 [source]: https://git.sr.ht/~sircmpwn/wayland-book
 
-## About the author
+### About the author
 
 <small>
   In the words of Preston Carpenter, a close collaborator of Drew's:

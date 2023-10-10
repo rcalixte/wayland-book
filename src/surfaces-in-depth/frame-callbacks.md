@@ -1,4 +1,4 @@
-# Frame callbacks
+## Frame callbacks
 
 The simplest way to update your surface is to simply render and attach new
 frames when it needs to change. This approach works well, for example, with

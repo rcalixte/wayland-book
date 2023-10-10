@@ -1,4 +1,4 @@
-# Proxies & resources
+## Proxies & resources
 
 An *object* is an entity known to both the client and server that has some
 state, changes to which are negotiated over the wire. On the client side,

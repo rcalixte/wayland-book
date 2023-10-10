@@ -15,7 +15,7 @@ you'll find it in the `wayland-protocols` package. It's probably installed at a
 path somewhat like `/usr/share/wayland-protocols/stable/xdg-shell/xdg-shell.xml`
 on your system.
 
-## xdg_wm_base
+### xdg_wm_base
 
 `xdg_wm_base` is the only global defined by the specification, and it provides
 requests for creating each of the other objects you need. The most basic

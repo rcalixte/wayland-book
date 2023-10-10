@@ -1,4 +1,4 @@
-# XKB, briefly
+## XKB, briefly
 
 The next input device on our list is keyboards, but we need to stop and give you
 some additional context before we discuss them. Keymaps are an essential detail
@@ -27,7 +27,7 @@ primitives for dealing with all of these cases, and maintains a state machine
 which tracks what your keyboard is doing and figures out exactly which *Unicode
 codepoints* the user is trying to type.
 
-## Using XKB
+### Using XKB
 
 So how is xkbcommon actually used? Well, the first step is to link to it and
 grab the header, `xkbcommon/xkbcommon.h`.[^1] Most programs which utilize

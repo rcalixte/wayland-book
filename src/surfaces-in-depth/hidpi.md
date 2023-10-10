@@ -1,4 +1,4 @@
-# High density surfaces (HiDPI)
+## High density surfaces (HiDPI)
 
 In the past several years, a huge leap in pixel density in high-end displays has
 been seen, new displays packing twice as many pixels into the same physical area

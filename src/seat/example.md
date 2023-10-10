@@ -1,4 +1,4 @@
-# Expanding our example code
+## Expanding our example code
 
 In previous chapters, we built a simple client which can present its surfaces on
 the display. Let's expand this code a bit to build a client which can receive
@@ -8,7 +8,7 @@ events to stderr.
 This is going to require a lot more code than we've worked with so far, so get
 strapped in. The first thing we need to do is set up the seat.
 
-## Setting up the seat
+### Setting up the seat
 
 The first thing we'll need is a reference to a seat. We'll add it to our
 `client_state` struct, and add keyboard, pointer, and touch objects for later
@@ -73,7 +73,7 @@ also rig up that listener:
 If you compile (`cc -o client client.c xdg-shell-protocol.c`) and run this now,
 you should seat the name of the seat printed to stderr.
 
-## Rigging up pointer events
+### Rigging up pointer events
 
 Let's get to pointer events. If you recall, pointer events from the Wayland
 server are to be accumulated into a single logical event. For this reason, we'll
@@ -356,7 +356,7 @@ confusing, though. All we're doing here is pretty-printing the accumulated state
 for this frame to stderr. If you compile and run this again now, you should be
 able to wiggle your mouse over the window and see input events printed out!
 
-## Rigging up keyboard events
+### Rigging up keyboard events
 
 Let's update our `client_state` struct with some fields to store XKB state.
 
@@ -557,7 +557,7 @@ you to decide.
 If you compile this again, you should be able to start typing into the window
 and see your input printed into the log. Huzzah!
 
-## Rigging up touch events
+### Rigging up touch events
 
 Finally, we'll add support for touch-capable devices. Like pointers, a "frame"
 event exists for touch devices. However, they're further complicated by the
@@ -837,7 +837,7 @@ Compile and run this again, and you'll be able to see touch events printed to
 stderr as you interact with your touch device (assuming you have such a device
 to test with). And now our client supports input!
 
-## What's next?
+### What's next?
 
 There are a lot of different kinds of input devices, so extending our code to
 support them was a fair bit of work &mdash; our code has grown by 2.5&times; in

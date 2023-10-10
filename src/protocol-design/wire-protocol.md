@@ -1,4 +1,4 @@
-# Wire protocol basics
+## Wire protocol basics
 
 **Note**: If you're just going to use libwayland, this chapter is optional -
 feel free to skip to chapter 2.2.
@@ -35,7 +35,7 @@ the other end using the ancillary data in the Unix domain socket message
 **enum**: A single value (or bitmap) from an enumeration of known constants,
 encoded into a 32-bit integer.
 
-## Messages
+### Messages
 
 The wire protocol is a stream of messages built with these primitives. Every
 message is an event (in the case of server to client messages) or request
@@ -55,7 +55,7 @@ and can be used to bootstrap other objects. We'll discuss this in chapter 4. The
 next chapter goes over what an interface is, and how requests and events work,
 assuming you've already negotiated an object ID. Speaking of which...
 
-## Object IDs
+### Object IDs
 
 When a message comes in with a `new_id` argument, the sender allocates an object
 ID for it &mdash; the interface used for this object is established through
@@ -69,7 +69,7 @@ new object allocation.
 An object ID of 0 represents a null object; that is, a non-existent object or
 the explicit lack of an object.
 
-## Transports
+### Transports
 
 To date all known Wayland implementations work over a Unix domain socket. This
 is used for one reason in particular: file descriptor messages. Unix sockets are

@@ -1,4 +1,4 @@
-# Registering globals
+## Registering globals
 
 Registering globals with libwayland-server is done somewhat differently. When
 you generate "server-code" with wayland-scanner, it creates interfaces
