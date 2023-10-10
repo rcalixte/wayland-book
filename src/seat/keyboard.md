@@ -1,4 +1,4 @@
-# Keyboard input
+## Keyboard input
 
 Equipped with an understanding of how to use XKB, let's extend our Wayland code
 to provide us with key events to feed into it. Similarly to how we obtained a
@@ -17,7 +17,7 @@ keyboard.
 
 But how do you actually use it? Let's start with the basics.
 
-## Key maps
+### Key maps
 
 When you bind to `wl_keyboard`, the first event that the server is likely to
 send is `keymap`.
@@ -69,7 +69,7 @@ Once we have a keymap, we can interpret future keypress events for this
 `wl_keyboard`. Note that the server can send a new keymap at any time, and all
 future key events should be interpreted in that light.
 
-## Keyboard focus
+### Keyboard focus
 
 ```
 <event name="enter">
@@ -94,7 +94,7 @@ The "enter" event also includes an array of currently pressed keys. This is an
 array of 32-bit unsigned integers, each representing the scancode of a pressed
 key.
 
-## Input events
+### Input events
 
 Once the keyboard has entered your surface, you can expect to start receiving
 input events.
@@ -152,7 +152,7 @@ static void wl_keyboard_modifiers(void *data, struct wl_keyboard *wl_keyboard,
 }
 ```
 
-## Key repeat
+### Key repeat
 
 The last event to consider is the "repeat_info" event:
 

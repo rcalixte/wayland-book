@@ -67,7 +67,7 @@ chapters.
 
 Before we get to those, let's cover some common semantics.
 
-## Event serials
+### Event serials
 
 Some actions that a Wayland client may perform require a trivial form of
 authentication in the form of input event serials. For example, a client which
@@ -92,7 +92,7 @@ the desired action.
 We'll discuss these in more detail in later chapters, when we start covering
 the specific requests which require input event serials to validate them.
 
-## Input frames
+### Input frames
 
 A single input event from an input device may be broken up into several Wayland
 events for practical reasons. For example, a `wl_pointer` will emit an `axis`
@@ -114,7 +114,7 @@ If this sounds too complicated, don't sweat it. Many applications don't have to
 worry about input frames. It's only when you start doing more complex input
 event handling that you'll want to concern yourself with this.
 
-## Releasing devices
+### Releasing devices
 
 When you're done using a device, each interface has a `release` request you can
 use to clean it up. It'll look something like this:
