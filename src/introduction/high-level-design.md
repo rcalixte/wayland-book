@@ -1,4 +1,4 @@
-# High-level design
+## High-level design
 
 Your computer has *input* and *output* devices, which respectively are
 responsible for receiving information from you and displaying information to
@@ -18,7 +18,7 @@ their appropriate place on your outputs. The process of bringing together all of
 your application windows for display on an output is called *compositing* 
 &mdash; and thus we call the software which does this the *compositor*.
 
-## In practice
+### In practice
 
 There are many distinct software components in desktop ecosystem. There are
 tools like Mesa for rendering (and each of its drivers), the Linux KMS/DRM
@@ -31,7 +31,7 @@ run most applications without implicating any of this software. That being said,
 a surface-level understanding of what these pieces are and how they work is
 useful. Let's start from the bottom and work our way up.
 
-## The hardware
+### The hardware
 
 A typical computer is equipped with a few important pieces of hardware. Outside
 of the box, we have your displays, keyboard, mouse, perhaps some speakers and a
@@ -55,7 +55,7 @@ on your system. The hardware provides an interface with which it can be
 commanded to perform work, and does what it's told &mdash; regardless of who 
 tells it so. For this reason, only one component is allowed to talk to it...
 
-## The kernel
+### The kernel
 
 This responsibility falls onto the kernel. The kernel is a complex beast, so
 we'll focus on only the parts which are relevant to Wayland. Linux's job is to
@@ -74,12 +74,12 @@ modesetting, and a render node (e.g. `renderD128`), for unprivileged operations
 like rendering or video decoding. For evdev, the "device nodes" are
 `/dev/input/event*`.
 
-## Userspace
+### Userspace
 
 Now, we enter userspace. Here, applications are isolated from the hardware and
 must work via the device nodes provided by the kernel.
 
-### libdrm
+#### libdrm
 
 Most Linux interfaces have a userspace counterpart which provides a
 pleasant(ish) C API for working with these device nodes. One such library is
@@ -87,7 +87,7 @@ libdrm, which is the userspace portion of the DRM subsystem. libdrm is used by
 Wayland compositors to do modesetting and other DRM operations, but is generally
 not used by Wayland clients directly.
 
-### Mesa
+#### Mesa
 
 Mesa is one of the most important parts of the Linux graphics stack. It
 provides, among other things, vendor-optimized implementations of OpenGL (and
@@ -96,7 +96,7 @@ abstraction on top of libdrm for allocating buffers on the GPU. Most Wayland
 compositors will use both GBM and OpenGL via Mesa, and most Wayland clients will
 use at least its OpenGL or Vulkan implementations.
 
-### libinput
+#### libinput
 
 Like libdrm abstracts the DRM subsystem, libinput provides the userspace end of
 evdev. It's responsible for receiving input events from the kernel from your
@@ -105,7 +105,7 @@ the Wayland compositor. The Wayland compositor requires special permissions to
 use the evdev files, forcing Wayland clients to go through the compositor to
 receive input events &mdash; which, for example, prevents keylogging.
 
-### (e)udev
+#### (e)udev
 
 Dealing with the appearance of new devices from the kernel, configuring
 permissions for the resulting device nodes in `/dev`, and sending word of these
@@ -114,7 +114,7 @@ onto userspace. Most systems use udev (or eudev, a fork) for this purpose. Your
 Wayland compositor uses udev to enumerate input devices and GPUs, and to receive
 notifications when new ones appear or old ones are unplugged.
 
-### xkbcommon
+#### xkbcommon
 
 XKB, short for X keyboard, is the original keyboard handling subsystem of the
 Xorg server. Several years ago, it was extracted from the Xorg tree and made
@@ -126,13 +126,13 @@ these scan codes into meaningful and generic key "symbols" &mdash; for example,
 converting `65` to `XKB_KEY_Space`. It also contains a state machine which knows
 that pressing "1" while shift is held emits "!".
 
-### pixman
+#### pixman
 
 A simple library used by clients and compositors alike for efficiently
 manipulating pixel buffers, doing math with intersecting rectangles, and
 performing other similar **pix**el **man**ipulation tasks.
 
-### libwayland
+#### libwayland
 
 libwayland the most commonly used implementation of the Wayland protocol,
 is written in C, and handles much of the low-level wire protocol. It also
@@ -140,7 +140,7 @@ provides a tool which generates high-level code from Wayland protocol
 definitions (which are XML files). We will be discussing libwayland in detail in
 chapter 1.3, and throughout this book.
 
-### ...and all the rest.
+#### ...and all the rest.
 
 Each of the pieces mentioned so far are consistently found throughout the Linux
 desktop ecosystem. Beyond this, more components exist. Many graphical

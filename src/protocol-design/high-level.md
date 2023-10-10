@@ -1,4 +1,4 @@
-# The high-level protocol
+## The high-level protocol
 
 In chapter 1.3, I mentioned that `wayland.xml` is probably installed with the
 Wayland package on your system. Find and pull up that file now in your favorite

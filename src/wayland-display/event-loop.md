@@ -1,11 +1,11 @@
-# Incorporating an event loop
+## Incorporating an event loop
 
 libwayland provides its own event loop implementation for Wayland servers to
 take advantage of, but the maintainers have acknowledged this as a design
 overstep. For clients, there is no such equivalent. Regardless, the Wayland
 server event loop is useful enough, even if it's out-of-scope.
 
-## Wayland server event loop
+### Wayland server event loop
 
 Each `wl_display` created by libwayland-server has a corresponding
 `wl_event_loop`, which you may obtain a reference to with
@@ -35,7 +35,7 @@ occurs on that file descriptor. You will also need to call
 
 [poll]: https://pubs.opengroup.org/onlinepubs/009695399/functions/poll.html
 
-## Wayland client event loop
+### Wayland client event loop
 
 libwayland-client, on the other hand, does not have its own event loop. However,
 since there is only generally one file descriptor, it's easier to manage
@@ -54,7 +54,7 @@ descriptor with `wl_display_get_fd`. Upon `POLLIN` events, call
 `wl_display_dispatch` to process incoming events. To flush outgoing requests,
 call `wl_display_flush`.
 
-## Almost there!
+### Almost there!
 
 At this point you have all of the context you need to set up a Wayland
 display and process events and requests. The only remaining step is to allocate
