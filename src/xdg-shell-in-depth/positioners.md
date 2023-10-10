@@ -1,4 +1,4 @@
-# Positioners
+## Positioners
 
 When we introduced pop-ups a few pages ago, we noted that you had to provide a
 positioner object when creating the pop-up. We asked you not to worry about it
@@ -15,7 +15,7 @@ client specify certain constraints in how the pop-up can be moved or resized,
 and then the compositor, being in full possession of the facts, can make the
 final call on how to accommodate.
 
-# The Basics
+### The Basics
 
 ```xml
 <request name="destroy" type="destructor"></request>
@@ -36,7 +36,7 @@ The set_size request is used to set the size of the pop-up window being created.
 All clients which use a positioner will use these two requests. Now, let's get
 to the interesting ones.
 
-# Anchoring
+### Anchoring
 
 ```xml
 ```
