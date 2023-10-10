@@ -1,4 +1,4 @@
-# wayland-scanner
+## wayland-scanner
 
 The Wayland package comes with one binary: `wayland-scanner`. This tool is used
 to generate C headers & glue code from the Wayland protocol XML files discussed
