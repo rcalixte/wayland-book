@@ -1,4 +1,4 @@
-# Binding to globals
+## Binding to globals
 
 Upon creating a registry object, the server will emit the `global` event for
 each global available on the server. You can then bind to the globals you

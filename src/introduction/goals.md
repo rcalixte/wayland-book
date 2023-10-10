@@ -1,4 +1,4 @@
-# Goals & target audience
+## Goals & target audience
 
 Our goal is for you to come away from this book with an understanding of the
 Wayland protocol and its high-level usage. You should have a solid understanding

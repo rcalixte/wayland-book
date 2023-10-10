@@ -1,4 +1,4 @@
-# Extended example code
+## Extended example code
 
 Using the sum of what we've learned so far, we can now write a Wayland client
 which displays something on the screen. The following code is a complete Wayland
