@@ -1,4 +1,4 @@
-# Protocol design patterns
+## Protocol design patterns
 
 There are some key concepts which have been applied in the design of most
 Wayland protocols that we should briefly cover here. These patterns are found
@@ -6,7 +6,7 @@ throughout the high-level Wayland protocol and protocol extensions (well, in the
 Wayland protocol, at least[^1]). If you find yourself writing your own
 protocol extensions, you'd be wise to apply these patterns yourself.
 
-## Atomicity
+### Atomicity
 
 The most important of the Wayland protocol design patterns is *atomicity*. A
 stated goal of Wayland is "every frame is perfect". To this end, most interfaces
@@ -29,7 +29,7 @@ few other key design decisions, this allows Wayland compositors to render
 everything perfectly in every frame &mdash; no tearing or partially updated 
 windows, just every pixel in its place and every place in its pixel.
 
-## Resource lifetimes
+### Resource lifetimes
 
 Another important design pattern is avoiding a situation where the server or
 client is sending events or requests that pertain to an invalid object. For this
@@ -48,7 +48,7 @@ queued up some requests for an object before destroying it, it would have had to
 send these requests in the correct order so that the object is no longer used
 after the client agreed it had been destroyed.
 
-## Versioning
+### Versioning
 
 There are two versioning models in use in Wayland protocols: unstable and
 stable. Both models only allow for backwards-compatible changes, but when a

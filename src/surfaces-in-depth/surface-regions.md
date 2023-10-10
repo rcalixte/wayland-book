@@ -1,4 +1,4 @@
-# Surface regions
+## Surface regions
 
 We've already used the `wl_compositor` interface to create `wl_surfaces` via
 `wl_compositor.create_surface`. Note, however, that it has a second request:

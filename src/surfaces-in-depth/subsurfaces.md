@@ -1,4 +1,4 @@
-# Subsurfaces
+## Subsurfaces
 
 There's only one[^1] surface role defined in the core Wayland protocol,
 `wayland.xml`: subsurfaces. They have an X, Y position relative to the parent
