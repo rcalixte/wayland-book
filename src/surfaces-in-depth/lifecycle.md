@@ -1,4 +1,4 @@
-# Surface lifecycle
+## Surface lifecycle
 
 We mentioned earlier that Wayland is designed to update everything atomically,
 such that no frame is ever presented in an invalid or intermediate state. Of the

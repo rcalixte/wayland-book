@@ -1,0 +1,97 @@
+---
+metadata:
+  title: The Wayland Protocol
+  author: Drew DeVault
+  category: "License: Creative Commons Attribution 4.0 International License"
+  keywords:
+    - "display server"
+    - "wayland"
+    - "xorg"
+    - "xwayland"
+standalone: true
+variables:
+  documentclass: scrbook
+  header-includes:
+    - \usepackage{graphicx}
+    - \usepackage{titling}
+    - \newcommand{\titlesc}[1]{\textsc{#1}}
+    - \pretitle{\begin{center}\includegraphics[width=2in]{wayland-logo.png}\\\LARGE\titlesc}
+    - \posttitle{\end{center}}
+  lang: en-US
+  links-as-notes: true
+  lot: false
+  lof: false
+  margin-top: 1.27cm
+  margin-left: .635cm
+  margin-right: .635cm
+  margin-bottom: 1.27cm
+  numbersections: true
+table-of-contents: true
+toc-depth: 2
+include-in-header: deeplists.tex
+verbosity: ERROR
+pdf-engine: xelatex
+input-files:
+  - ./src/introduction.md
+  - ./src/introduction/high-level-design.md
+  - ./src/introduction/goals.md
+  - ./src/introduction/package.md
+  - ./src/protocol-design.md
+  - ./src/protocol-design/wire-protocol.md
+  - ./src/protocol-design/interfaces-reqs-events.md
+  - ./src/protocol-design/high-level.md
+  - ./src/protocol-design/design-patterns.md
+  - ./src/libwayland.md
+  - ./src/libwayland/util.md
+  - ./src/libwayland/wayland-scanner.md
+  - ./src/libwayland/proxies.md
+  - ./src/libwayland/interfaces.md
+#  - ./src/libwayland/event-loop.md
+#  - ./src/libwayland/fds.md
+  - ./src/wayland-display.md
+  - ./src/wayland-display/creation.md
+  - ./src/wayland-display/event-loop.md
+  - ./src/registry.md
+  - ./src/registry/binding.md
+  - ./src/registry/server-side.md
+  - ./src/surfaces.md
+  - ./src/surfaces/compositor.md
+  - ./src/surfaces/shared-memory.md
+  - ./src/surfaces/dmabuf.md
+  - ./src/surfaces/roles.md
+#  - ./src/surfaces/surface-roles.md
+  - ./src/xdg-shell-basics.md
+  - ./src/xdg-shell-basics/xdg-surface.md
+  - ./src/xdg-shell-basics/xdg-toplevel.md
+  - ./src/xdg-shell-basics/example-code.md
+  - ./src/surfaces-in-depth.md
+  - ./src/surfaces-in-depth/lifecycle.md
+  - ./src/surfaces-in-depth/frame-callbacks.md
+  - ./src/surfaces-in-depth/damaging-surfaces.md
+  - ./src/surfaces-in-depth/surface-regions.md
+  - ./src/surfaces-in-depth/subsurfaces.md
+  - ./src/surfaces-in-depth/hidpi.md
+  - ./src/seat.md
+  - ./src/seat/pointer.md
+  - ./src/seat/xkb.md
+  - ./src/seat/keyboard.md
+  - ./src/seat/touch.md
+  - ./src/seat/example.md
+  - ./src/xdg-shell-in-depth.md
+  - ./src/xdg-shell-in-depth/configuration.md
+  - ./src/xdg-shell-in-depth/popups.md
+  - ./src/xdg-shell-in-depth/interactive.md
+  - ./src/xdg-shell-in-depth/positioners.md
+#  - ./src/clipboard.md
+#  - ./src/clipboard/data-offers.md
+#  - ./src/clipboard/dnd.md
+#  - ./src/protocol-extensions.md
+#  - ./src/protocol-extensions/timing.md
+#  - ./src/protocol-extensions/pointer-constraints.md
+#  - ./src/protocol-extensions/clipboard.md
+#  - ./src/protocol-extensions/desktop-shell.md
+#  - ./src/protocol-extensions/misc.md
+#  - ./src/protocol-extensions/writing.md
+#  - ./src/acknowledgements.md
+output-file: wayland-book.pdf
+...
