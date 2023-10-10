@@ -1,4 +1,4 @@
-# Interactive move and resize
+## Interactive move and resize
 
 Many application windows have interactive UI elements the user can use to drag
 around or resize windows. Many Wayland clients, by default, expect to be
@@ -78,7 +78,7 @@ client-driven interactions with compositor-driven meta operations like
 minimizing windows. If your client uses client-side decorations, you may use
 this request for this purpose.
 
-## xdg-decoration
+### xdg-decoration
 
 The last detail which bears mentioning when discussing the behavior of
 client-side decorations is the protocol which governs the negotiation of their
