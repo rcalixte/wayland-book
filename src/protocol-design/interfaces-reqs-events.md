@@ -1,11 +1,11 @@
-# Interfaces, requests, and events
+## Interfaces, requests, and events
 
 The Wayland protocol works by issuing *requests* and *events* that act on
 *objects*. Each object has an *interface* which defines what requests and events
 are possible, and the *signature* of each. Let's consider an example interface:
 `wl_surface`.
 
-## Requests
+### Requests
 
 A surface is a box of pixels that can be displayed on-screen. It's one of the
 primitives we build things like application windows out of. One of its
@@ -28,7 +28,7 @@ it looks up the signature for the request with opcode 2. It then knows to expect
 four integers as the arguments, and it can decode the message and dispatch it 
 for processing internally.
 
-## Events
+### Events
 
 The server can also send messages back to the client &mdash; events. One event
 that the server can send regarding a `wl_surface` is "enter", which it sends
@@ -47,7 +47,7 @@ tune as the server did. It looks up object 10, associates it with the
 opcode 0. It decodes the rest of the message accordingly, looking up the
 `wl_output` with ID 5 as well, then dispatches it for processing internally.
 
-## Interfaces
+### Interfaces
 
 The interfaces which define the list of requests and events, the opcodes
 associated with each, and the signatures with which you can decode the messages,

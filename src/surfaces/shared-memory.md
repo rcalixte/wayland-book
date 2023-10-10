@@ -1,4 +1,4 @@
-# Shared memory buffers
+## Shared memory buffers
 
 The simplest means of getting pixels from client to compositor, and the only one
 enshrined in `wayland.xml`, is `wl_shm` &mdash; shared memory. Simply put, it 
@@ -7,7 +7,7 @@ allows you to transfer a file descriptor for the compositor to mmap with
 synchronization primitives to keep everyone from fighting over each buffer, and 
 you have a workable &mdash; and portable &mdash; solution.
 
-## Binding to wl_shm
+### Binding to wl_shm
 
 The registry global listener explained in chapter 5.1 will advertise the
 `wl_shm` global when it's available. Binding to it is fairly straightforward.
@@ -47,7 +47,7 @@ full list of possible pixel formats is given in `wayland.xml`. Two formats are
 required to be supported: `ARGB8888`, and `XRGB8888`, which are 24-bit color,
 with and without an alpha channel respectively.
 
-## Allocating a shared memory pool
+### Allocating a shared memory pool
 
 A combination of POSIX `shm_open` and random file names can be utilized to
 create a file suitable for this purpose, and `ftruncate` can be utilized to
@@ -131,7 +131,7 @@ struct wl_shm *shm = ...; // Bound from registry
 struct wl_shm_pool *pool = wl_shm_create_pool(shm, fd, shm_pool_size);
 ```
 
-## Creating buffers from a pool
+### Creating buffers from a pool
 
 Once word of this gets to the compositor, it will `mmap` this file descriptor as
 well. Wayland is asynchronous, though, so we can start allocating buffers from
@@ -185,7 +185,7 @@ role.
 
 [^1]: "Damaged" meaning "this area needs to be redrawn"
 
-## wl_shm on the server
+### wl_shm on the server
 
 Before we get there, however, the server-side part of this deserves note.
 libwayland provides some helpers to make using `wl_shm` easier. To configure it

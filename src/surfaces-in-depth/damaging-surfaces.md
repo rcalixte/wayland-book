@@ -1,4 +1,4 @@
-# Damaging surfaces
+## Damaging surfaces
 
 You may have noticed in the last example that we added this line of code when we
 committed a new frame for the surface:

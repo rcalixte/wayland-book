@@ -1,8 +1,8 @@
-# Creating a display
+## Creating a display
 
 Fire up your text editor &mdash; it's time to write our first lines of code.
 
-## For Wayland clients
+### For Wayland clients
 
 Connecting to a Wayland server and creating a `wl_display` to manage the
 connection's state is quite easy:
@@ -69,7 +69,7 @@ You can also obtain the file descriptor that the `wl_display` is using via
 int wl_display_get_fd(struct wl_display *display);
 ```
 
-## For Wayland servers
+### For Wayland servers
 
 The process is fairly simple for servers as well. The creation of the display
 and binding to a socket are separate, to give you time to configure the display
