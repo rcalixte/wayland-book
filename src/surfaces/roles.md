@@ -1,4 +1,4 @@
-# Surface roles
+## Surface roles
 
 We have created a pixel buffer, sent it to the server, and attached it to a
 surface through which we can allegedly present it to the user. However, one

@@ -1,4 +1,4 @@
-# XDG surfaces
+## XDG surfaces
 
 Surfaces in the domain of xdg-shell are referred to as `xdg_surfaces`, and this
 interface brings with it a small amount of functionality common to both kinds of

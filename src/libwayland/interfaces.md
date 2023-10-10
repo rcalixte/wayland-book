@@ -1,4 +1,4 @@
-# Interfaces & listeners
+## Interfaces & listeners
 
 Finally, we reach the summit of libwayland's abstractions: interfaces and
 listeners. The ideas discussed in previous chapters &mdash; `wl_proxy` and
