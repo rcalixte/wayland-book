@@ -1,4 +1,4 @@
-# Popups
+## Popups
 
 When designing software which utilizes application windows, there are many cases
 where smaller secondary surfaces are used for various purposes. Some examples
@@ -48,7 +48,7 @@ Then we can render and attach buffers to our popup surface with the same
 lifecyle discussed earlier. We also have access to a few other popup-specific
 features.
 
-## Configuration
+### Configuration
 
 Like the XDG toplevel configure event, the compositor has an event which it may
 use to suggest the size for your popup to assume. Unlike toplevels, however,
@@ -69,7 +69,7 @@ position of the popup relative to its parent surface.
 The client can influence these values with the XDG positioner, to be discussed
 in chapter 10.4.
 
-## Popup grabs
+### Popup grabs
 
 Popup surfaces will often want to "grab" all input, for example to allow the
 user to use the arrow keys to select different menu items. This is facilitated
@@ -88,7 +88,7 @@ request. These semantics are covered in detail in chapter 9. The compositor can
 cancel this grab later, for example if the user presses escape or clicks outside
 of your popup.
 
-## Dismissal
+### Dismissal
 
 In these cases where the compositor dismisses your popup, such as when the
 escape key is pressed, the following event is sent:
@@ -101,7 +101,7 @@ To avoid race conditions, the compositor keeps the popup structures in memory
 and services requests for them even after their dismissal. For more detail about
 object lifetimes and race conditions, see chapter 2.4.
 
-## Destroying popups
+### Destroying popups
 
 Client-initiated destruction of a popup is fairly straightforward:
 
