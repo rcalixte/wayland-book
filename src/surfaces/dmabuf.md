@@ -1,4 +1,4 @@
-# Linux dmabuf
+## Linux dmabuf
 
 <!-- TODO: Move me to an appendix -->
 
@@ -33,7 +33,7 @@ particular. However, we can provide a short summary of its use.
 Should you need to change the size of the `wl_egl_window` later, use
 `wl_egl_window_resize`.
 
-## But I really want to know about the internals
+### But I really want to know about the internals
 
 Some Wayland programmers who don't use libwayland complain that this approach
 ties Mesa and libwayland tightly together, which is true. However, untangling
@@ -43,7 +43,7 @@ for details on the protocol, and Mesa's implementation at
 `src/egl/drivers/dri2/platform_wayland.c` (at the time of writing). Good luck
 and godspeed.
 
-## For the server
+### For the server
 
 Unfortunately, the details for the compositor are both complicated and
 out-of-scope for this book. I can point you in the right direction, however:

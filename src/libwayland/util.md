@@ -1,4 +1,4 @@
-# wayland-util primitives
+## wayland-util primitives
 
 Common to both the client and server libraries is `wayland-util.h`, which
 defines a number of structs, utility functions, and macros that establish a

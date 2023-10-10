@@ -1,4 +1,4 @@
-# Touch input
+## Touch input
 
 On the surface, touchscreen input is fairly simple, and your implementation can
 be simple as well. However, the protocol offers you a lot of depth, which
@@ -15,7 +15,7 @@ Similarly to other input devices, you may obtain a `wl_touch` resource with
 `wl_seat.get_touch`, and you should send a "release" request when you're
 finished with it.
 
-## Touch frames
+### Touch frames
 
 Like pointers, a single frame of touch processing on the server might carry
 information about many changes, but the server sends these as discrete Wayland
@@ -29,7 +29,7 @@ Clients should accumulate all `wl_touch` events as they're received, then
 process pending inputs as a single touch event when the "frame" event is
 received.
 
-## Touch and release
+### Touch and release
 
 The first events we'll look at are "down" and "up", which are respectively
 raised when you press your finger against the device, and remove your finger
@@ -58,7 +58,7 @@ argument. The time is a monotonically increasing timestamp with an arbitrary
 epoch, in milliseconds.[^2] Note also the inclusion of a serial, which can be 
 included in future requests to associate them with this input event.
 
-## Motion
+### Motion
 
 After you receive a "down" event with a specific touch ID, you will begin to
 receive motion events which describe the movement of that touch point across the
@@ -76,7 +76,7 @@ device.
 The "x" and "y" coordinates here are in the relative coordinate space of the
 surface which the "enter" event was sent for.
 
-## Gesture cancellation
+### Gesture cancellation
 
 Touch events often have to meet some threshold before they're recognized as a
 gesture. For example, swiping across the screen from left to right could be used
@@ -96,7 +96,7 @@ taking over.
 
 When you receive this event, all active touch points are cancelled.
 
-## Shape and orientation
+### Shape and orientation
 
 Some high-end touch hardware is capable of determining more information about
 the way the user is interacting with it. For users of suitable hardware and
