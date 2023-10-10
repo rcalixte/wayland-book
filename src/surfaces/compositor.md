@@ -1,4 +1,4 @@
-# Using wl_compositor
+## Using wl_compositor
 
 They say naming things is one of the most difficult problems in computer
 science, and here we are, with evidence in hand. The `wl_compositor` global is

@@ -1,4 +1,4 @@
-# Pointer input
+## Pointer input
 
 Using the `wl_seat.get_pointer` request, clients may obtain a `wl_pointer`
 object. The server will send events to it whenever the user moves their pointer,
@@ -75,7 +75,7 @@ After the cursor has entered your surface and you have attached an appropriate
 cursor, you're ready to start processing input events. There are motion, button,
 and axis events.
 
-## Pointer frames
+### Pointer frames
 
 A single frame of input processing on the server could carry information about
 lots of changes &mdash; for example, polling the mouse once could return, in a
@@ -91,7 +91,7 @@ Clients should accumulate all `wl_pointer` events as they're received, then
 process pending inputs as a single pointer event once the "frame" event is
 received.
 
-## Motion events
+### Motion events
 
 Motion events are specified in the same coordinate space as the `enter` event
 uses, and are straightforward enough:
@@ -108,7 +108,7 @@ Like all input events which include a timestamp, the `time` value is a
 monotonically increasing millisecond-precision timestamp associated with this
 input event.
 
-## Button events
+### Button events
 
 Button events are mostly self-explanatory:
 
@@ -133,7 +133,7 @@ the most useful ones will probably be represented by the constants `BTN_LEFT`,
 `BTN_RIGHT`, and `BTN_MIDDLE`. There are more, I'll leave you to peruse the
 header at your leisure.
 
-## Axis events
+### Axis events
 
 The axis event is used for scrolling actions, such as rotating your scroll wheel
 or rocking it from left to right. The most basic form looks like this:
