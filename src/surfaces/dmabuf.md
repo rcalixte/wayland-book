@@ -12,7 +12,7 @@ The Linux DRM (Direct Rendering Manager) interface (which is also implemented on
 some BSDs) provides a means for us to export handles to GPU resources. Mesa, the
 predominant implementation of userspace Linux graphics drivers, implements a
 protocol that allows EGL users to transfer handles to their GPU buffers from the
-client to the compositor for rendering, without ever copying data to the GPU.
+client to the compositor for rendering, without ever copying data to the CPU.
 
 The internals of how this protocol works are out of scope for this book and
 would be more appropriate for resources which focus on Mesa or Linux DRM in
