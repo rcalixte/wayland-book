@@ -1,38 +1,21 @@
 image: alpine/edge
 packages:
-- cargo
-- cmake
-- expat-dev
-- fontconfig-dev
-- freetype-dev
-- harfbuzz-dev
-- openssl-dev
-- rsync
+- calibre
+- hut
+- mdbook
 - rust
-secrets:
-  - 160a72cf-34d6-47b7-928b-c13b42b4d4f6
+oauth: pages.sr.ht/PAGES:RW
 sources:
 - https://git.sr.ht/~sircmpwn/wayland-book
-- https://github.com/rust-lang-nursery/mdBook
-- https://github.com/lbeckman314/mdbook-latex
+artifacts:
+- wayland-book/book/The-Wayland-Book.epub
 tasks:
-- setup: |
-    echo "export PATH=$PATH:$HOME/.cargo/bin" >>.buildenv
-- mdbook: |
-    cd mdBook
-    cargo install --path .
-# TODO: Generate PDFs for distribution
-#- mdbook-latex: |
-#    cd mdbook-latex
-#    cargo install --path .
 - build: |
     cd wayland-book
     mdbook build
-# TODO: package calibre for Alpine Linux
-#- epub: |
-#    cd wayland-book
-#    ebook-convert book/html/print.html book/'The Wayland Book'.epub
+- epub: |
+    cd wayland-book
+    ebook-convert book/print.html book/The-Wayland-Book.epub
 - deploy: |
     cd wayland-book
-    sshopts="-o StrictHostKeyChecking=no"
-    rsync --rsh="ssh $sshopts" -rP book/ deploy@drewdevault.com:/var/www/wayland-book/
+    hut pages publish -d wayland-book.com ./book

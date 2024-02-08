@@ -3,8 +3,3 @@ authors = ["Drew DeVault"]
 multilingual = false
 src = "src"
 title = "The Wayland Protocol"
-
-[output.html]
-
-#[output.latex]
-#pdf = true
