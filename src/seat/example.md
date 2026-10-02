@@ -284,7 +284,7 @@ Speaking of which, it's time for the main attraction: our "frame" handler.
 +{
 +       struct client_state *client_state = data;
 +       struct pointer_event *event = &client_state->pointer_event;
-+       fprintf(stderr, "pointer frame @ %d: ", event->time);
++       fprintf(stderr, "pointer frame @ %" PRIu32 ": ", event->time);
 +
 +       if (event->event_mask & POINTER_EVENT_ENTER) {
 +               fprintf(stderr, "entered %f, %f ",
@@ -305,7 +305,7 @@ Speaking of which, it's time for the main attraction: our "frame" handler.
 +       if (event->event_mask & POINTER_EVENT_BUTTON) {
 +               char *state = event->state == WL_POINTER_BUTTON_STATE_RELEASED ?
 +                       "released" : "pressed";
-+               fprintf(stderr, "button %d %s ", event->button, state);
++               fprintf(stderr, "button %" PRIu32 " %s ", event->button, state);
 +       }
 +
 +       uint32_t axis_events = POINTER_EVENT_AXIS
@@ -485,7 +485,7 @@ this function, in case the compositor changes the keymap at runtime.[^1]
 +               xkb_keysym_t sym = xkb_state_key_get_one_sym(
 +                               client_state->xkb_state, *key + 8);
 +               xkb_keysym_get_name(sym, buf, sizeof(buf));
-+               fprintf(stderr, "sym: %-12s (%d), ", buf, sym);
++               fprintf(stderr, "sym: %-12s (%" PRIu32 "), ", buf, sym);
 +               xkb_state_key_get_utf8(client_state->xkb_state,
 +                               *key + 8, buf, sizeof(buf));
 +               fprintf(stderr, "utf8: '%s'\n", buf);
@@ -511,7 +511,7 @@ We'll do something similar when keys are pressed:
 +       xkb_keysym_get_name(sym, buf, sizeof(buf));
 +       const char *action =
 +               state == WL_KEYBOARD_KEY_STATE_PRESSED ? "press" : "release";
-+       fprintf(stderr, "key %s: sym: %-12s (%d), ", action, buf, sym);
++       fprintf(stderr, "key %s: sym: %-12s (%" PRIu32 "), ", action, buf, sym);
 +       xkb_state_key_get_utf8(client_state->xkb_state, keycode,
 +                       buf, sizeof(buf));
 +       fprintf(stderr, "utf8: '%s'\n", buf);
@@ -791,7 +791,7 @@ accumulated state as a single input event, much like our pointer code.
 +       struct client_state *client_state = data;
 +       struct touch_event *touch = &client_state->touch_event;
 +       const size_t nmemb = sizeof(touch->points) / sizeof(struct touch_point);
-+       fprintf(stderr, "touch event @ %d:\n", touch->time);
++       fprintf(stderr, "touch event @ %" PRIu32 ":\n", touch->time);
 +
 +       for (size_t i = 0; i < nmemb; ++i) {
 +               struct touch_point *point = &touch->points[i];

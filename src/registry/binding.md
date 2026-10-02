@@ -44,7 +44,7 @@ Armed with this information, we can write our first useful Wayland client: one
 which simply prints all of the globals available on the server.
 
 ```c
-#include <stdint.h>
+#include <inttypes.h>
 #include <stdio.h>
 #include <wayland-client.h>
 
@@ -52,7 +52,7 @@ static void
 registry_handle_global(void *data, struct wl_registry *registry,
 		uint32_t name, const char *interface, uint32_t version)
 {
-	printf("interface: '%s', version: %d, name: %d\n",
+	printf("interface: '%s', version: %" PRIu32 ", name: %" PRIu32 "\n",
 			interface, version, name);
 }
 
